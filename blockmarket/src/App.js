@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import Form from './demo/form.js';
+import postform from './postForm.js';
+
+import apiWrapper from './server/server.js';
 
 function App() {
+  const [orders, setOrders] = useState([]);
+
+  // the empty dependency list is important!
+  // if we don 't include it, we enter an infinite loop,
+  //since useEffect callback is called every time the component reloads (i.e. state changes)
+  useEffect(() => {
+    async function getOrders() {
+      const originalOrders = await apiWrapper.get("/pizza");
+      setOrders(originalOrders);
+    }
+
+    getOrders();
+  }, []);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form offerPremium setOrders={setOrders} />
     </div>
   );
 }
