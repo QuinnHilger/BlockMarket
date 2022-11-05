@@ -1,4 +1,4 @@
-.text-input, .email-input {
+  .text-input, .email-input {
     margin-bottom: 15px;
     height: 30px;
     text-indent: 10px;
@@ -7,8 +7,12 @@
     display: block;
   }
   
-  .checkbox-input, .radio-input {
+  .radio-input {
     margin-right: 0.75rem;
+  }
+  .selection-box {
+    width: fit-content;
+    border-radius: 5px;
   }
   
   .comments {
@@ -18,11 +22,6 @@
     display: block;
     font-family: inherit;
   }
-  
-  .selection-box {
-    width: fit-content;
-  }
-  
   .submit-button {
     font-family: inherit;
     border-radius: 8px;

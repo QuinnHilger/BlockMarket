@@ -1,25 +1,22 @@
 import React, { useState } from 'react';
-import apiWrapper from './server/server.js';
-import styles from './demo/styles.module.css';
-
-/** @typedef {{ offerPremium: boolean, setOrders: React.Dispatch<React.SetStateAction<any[]>> }} IProps */
-
+import apiWrapper from './server.js';
+import styles from './styles.module.css';
 /**
  * Form used to create a pizza order
  * @param {IProps} props an object containing props of type IProps
  */
 
-function PostForm({setOrders}) {
+function PostForm({}) {
   const [formData, setFormData] = useState({
         title: "",
-        price: 0,
+        price: "",
         description: "", 
         //profile to create later
         time: "",
         theme: "",
         numPieces: 0,
         condition: "",
-        serialNum: "",
+        setNum: "",
         pictures: []
   });
 
@@ -31,6 +28,7 @@ function PostForm({setOrders}) {
     const { name, type, value, checked } = event.target;
     setFormData(prevData => ({
       ...prevData,
+      [name]: type === "checkbox" ? checked : value
     }));
   };
 
@@ -40,9 +38,7 @@ function PostForm({setOrders}) {
    */
   async function handleSubmit(event) {
     event.preventDefault();
-    
-    const response = await apiWrapper.post("/create");
-    setOrders(oldOrders => [...oldOrders, response.data]);
+    //initialize post with variables
   }
 
   return (
@@ -62,7 +58,7 @@ function PostForm({setOrders}) {
         step="0.01"
         name="price"
         onChange={handleFormChange}
-        placeholder="Price"
+        placeholder="Price: $"
         value={formData.price}
         className={styles["text-input"]}
       />
@@ -73,7 +69,30 @@ function PostForm({setOrders}) {
         onChange={handleFormChange}
         className={styles["comments"]}
       />
-
+      <input
+        type="text"
+        name="theme"
+        onChange={handleFormChange}
+        placeholder="Theme"
+        value={formData.theme}
+        className={styles["text-input"]}
+      />
+      <input
+        type="number"
+        name="numPieces"
+        onChange={handleFormChange}
+        placeholder="Number of Pieces"
+        value={formData.numPieces}
+        className={styles["text-input"]}
+      />
+      <input
+        type="number"
+        name="setNum"
+        onChange={handleFormChange}
+        placeholder="Set Number"
+        value={formData.setNum}
+        className={styles["text-input"]}
+      />
       <fieldset className={styles["selection-box"]}>
         <legend>Condition</legend>
         <input 
@@ -89,15 +108,24 @@ function PostForm({setOrders}) {
         
         <input 
           type="radio"
-          name="condiiton"
+          name="condition"
           value="Used"
-          checked={formData.type === "Used"}
+          checked={formData.condition === "Used"}
           onChange={handleFormChange}
           className={styles["radio-input"]}
         />
-        <label htmlFor="Used">Used</label>
+        <label htmlFor="used">Used</label>
         <br />
-    </fieldset>
+    </fieldset> 
+    
+    <input
+        type="text"
+        name="pictures"
+        onChange={handleFormChange}
+        placeholder="Pictures Placeholder"
+        value={formData.pictures}
+        className={styles["text-input"]}
+      />
     <br />
     <button className={styles["submit-button"]} onClick={handleSubmit}>Submit</button>
     </form>

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Form from './demo/form.js';
-import postform from './postForm.js';
+//import Form from './demo/form.js';
+import Form from './postForm.js';
 
-import apiWrapper from './server/server.js';
+import apiWrapper from './server.js';
 
 function App() {
   const [orders, setOrders] = useState([]);
@@ -12,7 +12,7 @@ function App() {
   //since useEffect callback is called every time the component reloads (i.e. state changes)
   useEffect(() => {
     async function getOrders() {
-      const originalOrders = await apiWrapper.get("/pizza");
+      const originalOrders = await apiWrapper.get("/post");
       setOrders(originalOrders);
     }
 
