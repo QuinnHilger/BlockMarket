@@ -69,16 +69,22 @@ function PostForm({}) {
         onChange={handleFormChange}
         className={styles["comments"]}
       />
-      <input
-        type="text"
-        name="theme"
-        onChange={handleFormChange}
-        placeholder="Theme"
-        value={formData.theme}
-        className={styles["text-input"]}
-      />
+      <label for="theme">Theme </label>
+      <select id="theme" name="theme">
+        <option value="starWars">Star Wars</option>
+        <option value="ninjago">Ninjago</option>
+        <option value="city">City</option>
+        <option value="lotr">Lord of the Rings</option>
+        <option value="harryPotter">Harry Potter</option>
+        <option value="superheroes">Superheroes</option>
+        <option value="architecture">Architecture</option>
+        <option value="space">Space</option>
+      </select>
       <input
         type="number"
+        min="0"
+        max="100000"
+        step="50"
         name="numPieces"
         onChange={handleFormChange}
         placeholder="Number of Pieces"
