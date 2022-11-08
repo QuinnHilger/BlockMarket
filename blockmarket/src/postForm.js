@@ -14,7 +14,7 @@ function PostForm({}) {
         //profile to create later
         time: "",
         theme: "",
-        numPieces: 0,
+        numPieces: "",
         condition: "",
         setNum: "",
         pictures: []
@@ -87,7 +87,7 @@ function PostForm({}) {
         step="50"
         name="numPieces"
         onChange={handleFormChange}
-        placeholder="Number of Pieces"
+        placeholder="Pieces"
         value={formData.numPieces}
         className={styles["text-input"]}
       />
