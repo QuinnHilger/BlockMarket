@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react';
 //import Form from './demo/form.js';
-import Form from './postForm.js';
-
+import Form from './pages/postForm.js';
+import {Routes, Route, useNavigate} from 'react-router-dom';
 import apiWrapper from './server.js';
 
 function App() {
+  const navigate = useNavigate();
+  function navigateToPostForm(){
+    navigate('/createpost');
+  }
+  function navigateHome(){
+    navigate('/');
+  }
   const [orders, setOrders] = useState([]);
 
   // the empty dependency list is important!
@@ -19,12 +26,27 @@ function App() {
     getOrders();
   }, []);
 
+  function Home() {
+    return (
+      <h2>BlockMarket</h2>
+    );
+  }
 
   return (
-    <div className="App">
-      <Form offerPremium setOrders={setOrders} />
+    <div>
+      <div>
+        <button onClick={navigateHome}>Home</button>
+        <hr />
+        <button onClick={navigateToPostForm}>Create Post</button>
+
+        <Routes>
+          <Route path="/createpost" element={<Form />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
     </div>
   );
 }
 
 export default App;
+export function navigateHome() {}
