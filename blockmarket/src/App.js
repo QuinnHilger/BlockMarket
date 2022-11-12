@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-//import Form from './demo/form.js';
-import Form from './pages/postForm.js';
+import PostForm from './pages/postForm.js';
+import UserForm from './pages/userForm.js';
+import LoginForm from './pages/loginForm.js';
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import apiWrapper from './server.js';
 
@@ -11,6 +12,12 @@ function App() {
   }
   function navigateHome(){
     navigate('/');
+  }
+  function navigateToUserForm(){
+    navigate('/createuser');
+  }
+  function navigateToLoginForm(){
+    navigate('/login');
   }
   const [orders, setOrders] = useState([]);
 
@@ -38,9 +45,12 @@ function App() {
         <button onClick={navigateHome}>Home</button>
         <hr />
         <button onClick={navigateToPostForm}>Create Post</button>
-
+        <button onClick={navigateToUserForm}>Create Account</button>
+        <button onClick={navigateToLoginForm}>Login</button>
         <Routes>
-          <Route path="/createpost" element={<Form />} />
+          <Route path="/createpost" element={<PostForm />} />
+          <Route path="/createuser" element={<UserForm />} />
+          <Route path="/login" element={<LoginForm />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </div>

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import apiWrapper from '../server.js';
 import styles from '../styles.module.css';
 import {useNavigate} from 'react-router-dom';
+import form from 'react-bootstrap';
 /**
- * Form used to create a pizza order
+ * Form used to create a post
  * @param {IProps} props an object containing props of type IProps
  */
 
@@ -45,6 +45,8 @@ function PostForm({}) {
   }
 
   return (
+    <>
+    <header>Create a Post</header>
     <form>
       <input
         type="text"
@@ -128,7 +130,9 @@ function PostForm({}) {
     </fieldset> 
     
     <input
-        type="text"
+        type="file"
+        class="form-control-file"
+        multiple
         name="pictures"
         onChange={handleFormChange}
         placeholder="Pictures Placeholder"
@@ -138,6 +142,7 @@ function PostForm({}) {
     <br />
     <button className={styles["submit-button"]} onClick={handleSubmit}>Submit</button>
     </form>
+    </>
   );
 }
 
