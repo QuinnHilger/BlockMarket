@@ -44,27 +44,39 @@ function LoginForm({}) {
 
   return (
     <>
-    <header>Login to your account</header>
-    <Form>
-      <input
-        type="text"
-        name="email"
-        onChange={handleFormChange}
-        placeholder="Email"
-        value={formData.email}
-        className={styles["text-input"]}
-      />
-      <input
-        type="text"
-        name="password"
-        onChange={handleFormChange}
-        placeholder="Password"
-        value={formData.password}
-        className={styles["text-input"]}
-      />
-    <Button variant="primary" onClick={handleSubmit}>Login</Button>
-    </Form>
-    <Button variant="outline-danger" onClick={navigateToUserForm}>Don't have an account? Create one here.</Button>
+        <form className="auth-form">
+          <div className="Auth-form-content">
+            <h3 className="Auth-form-title">Login to your account</h3>
+              <div classname="form-group mt-3">
+                <label>Email Address</label>
+                  <input
+                    type="text"
+                    name="email"
+                    onChange={handleFormChange}
+                    placeholder="Enter email"
+                    value={formData.email}
+                    className="form-control mt-1"
+                    />
+              </div>
+              <div className="form-group mt-3">
+                <label>Password</label>
+                  <input
+                    type="text"
+                    name="password"
+                    onChange={handleFormChange}
+                    placeholder="Enter Password"
+                    value={formData.password}
+                    className="form-control mt-1"
+                  />
+              </div>
+              <div className="d-grip gap-2 mt-3">
+                <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
+                  Login
+                </button>
+              </div>
+            <Button variant="outline-danger" onClick={navigateToUserForm}>Don't have an account? Create one here.</Button>
+          </div>
+        </form>
     </>
   );
 }

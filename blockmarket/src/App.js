@@ -4,6 +4,7 @@ import UserForm from './pages/userForm.js';
 import LoginForm from './pages/loginForm.js';
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import apiWrapper from './server.js';
+import "./App.css"
 
 function App() {
   const navigate = useNavigate();
