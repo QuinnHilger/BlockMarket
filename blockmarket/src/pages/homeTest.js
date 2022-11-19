@@ -2,9 +2,10 @@ import logo from '../logo.svg';
 import PostForm from './postForm.js';
 import UserForm from './userForm.js';
 import LoginForm from './loginForm.js';
+import MyImage from '../images/LegoImage.jpg';
 import {Routes, Route, useNavigate, link} from 'react-router-dom';
 import "../App.css";
-import {Navbar, Container, Nav, NavDropdown, Row, Col} from "react-bootstrap";
+import {Image, Navbar, Container, Nav, NavDropdown, Row, Col} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css"
 
 function HomeTest() {
@@ -35,7 +36,7 @@ function HomeTest() {
       <Container>
         <Row>
           <Col>
-          Welcome to Block Market
+          <Image fluid src={MyImage}/>
           </Col>
         </Row>
       </Container>

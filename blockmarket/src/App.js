@@ -7,6 +7,10 @@ import {Routes, Route, useNavigate} from 'react-router-dom';
 import apiWrapper from './server.js';
 import "./App.css"
 
+import {Image, Navbar, Container, Nav, NavDropdown, Row, Col} from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import MyImage from './images/LegoImage.jpg';
+
 function App() {
   const navigate = useNavigate();
   function navigateToPostForm(){
