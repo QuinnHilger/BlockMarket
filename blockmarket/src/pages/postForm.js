@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../styles.module.css';
 import {useNavigate} from 'react-router-dom';
-import form from 'react-bootstrap';
 /**
  * Form used to create a post
  * @param {IProps} props an object containing props of type IProps
