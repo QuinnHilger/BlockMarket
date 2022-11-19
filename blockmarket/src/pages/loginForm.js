@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import styles from '../styles.module.css';
 import {useNavigate} from 'react-router-dom';
-import {Button, Form} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 /**
  * Form used to create a user
  * @param {IProps} props an object containing props of type IProps
@@ -43,10 +42,16 @@ function LoginForm({}) {
   }
 
   return (
-    <>
-        <form className="auth-form">
+    <div className="Auth-form-container">
+        <form className="Auth-form">
           <div className="Auth-form-content">
             <h3 className="Auth-form-title">Login to your account</h3>
+            <div className="text-center">
+              Don't have an account?{" "}
+              <span className="link-primary" onClick={navigateToUserForm}>
+                Create Account
+              </span>
+            </div>
               <div classname="form-group mt-3">
                 <label>Email Address</label>
                   <input
@@ -74,10 +79,9 @@ function LoginForm({}) {
                   Login
                 </button>
               </div>
-            <Button variant="outline-danger" onClick={navigateToUserForm}>Don't have an account? Create one here.</Button>
           </div>
         </form>
-    </>
+        </div>
   );
 }
 
