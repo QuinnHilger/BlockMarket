@@ -3,9 +3,11 @@ import PostForm from './pages/postForm.js';
 import UserForm from './pages/userForm.js';
 import LoginForm from './pages/loginForm.js';
 import Filters from './pages/filters.js';
+import HomeTest from './pages/homeTest.js';
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import {Button, Form} from 'react-bootstrap';
 import apiWrapper from './server.js';
+import "./App.css"
 
 function App() {
   const navigate = useNavigate();
@@ -23,6 +25,9 @@ function App() {
   }
   function navigateToFilters(){
     navigate('/filters');
+  }
+  function navigateToHomeTest(){
+    navigate('/homeTest');
   }
   const [orders, setOrders] = useState([]);
 
@@ -66,20 +71,20 @@ function App() {
       <div>
         <Button onClick={navigateHome}>Home</Button>
         <hr />
-        <Button onClick={navigateToPostForm}>Create Post</Button>
-        <Button onClick={navigateToUserForm}>Create Account</Button>
-        <Button onClick={navigateToLoginForm}>Login</Button>
+        <button onClick={navigateToPostForm}>Create Post</button>
+        <button onClick={navigateToUserForm}>Create Account</button>
+        <button onClick={navigateToLoginForm}>Login</button>
+        <button onClick={navigateToHomeTest}>Home Test</button>
         <Routes>
           <Route path="/createpost" element={<PostForm />} />
           <Route path="/createuser" element={<UserForm />} />
           <Route path="/login" element={<LoginForm />} />
-          <Route path="/filters" element={<Filters />} />
+          <Route path="/homeTest" element={<HomeTest />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </div>
     </div>
   );
 }
-
 export default App;
 export function navigateHome() {}
