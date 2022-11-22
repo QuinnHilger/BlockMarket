@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import PostForm from './pages/postForm.js';
 import UserForm from './pages/userForm.js';
 import LoginForm from './pages/loginForm.js';
+import Filters from './pages/filters.js';
 import {Routes, Route, useNavigate} from 'react-router-dom';
+import {Button, Form} from 'react-bootstrap';
 import apiWrapper from './server.js';
 
 function App() {
@@ -19,6 +21,9 @@ function App() {
   function navigateToLoginForm(){
     navigate('/login');
   }
+  function navigateToFilters(){
+    navigate('/filters');
+  }
   const [orders, setOrders] = useState([]);
 
   // the empty dependency list is important!
@@ -33,24 +38,42 @@ function App() {
     getOrders();
   }, []);
 
+  function handleSearch()
+  {
+
+  }
+
   function Home() {
     return (
+      <>
       <h2>BlockMarket</h2>
+      <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-success" onClick={handleSearch}>Search</Button>
+            <Button onClick={navigateToFilters}>Filters</Button>
+      </Form>
+      </>
     );
   }
 
   return (
     <div>
       <div>
-        <button onClick={navigateHome}>Home</button>
+        <Button onClick={navigateHome}>Home</Button>
         <hr />
-        <button onClick={navigateToPostForm}>Create Post</button>
-        <button onClick={navigateToUserForm}>Create Account</button>
-        <button onClick={navigateToLoginForm}>Login</button>
+        <Button onClick={navigateToPostForm}>Create Post</Button>
+        <Button onClick={navigateToUserForm}>Create Account</Button>
+        <Button onClick={navigateToLoginForm}>Login</Button>
         <Routes>
           <Route path="/createpost" element={<PostForm />} />
           <Route path="/createuser" element={<UserForm />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/filters" element={<Filters />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </div>
