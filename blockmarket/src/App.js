@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import PostForm from './pages/postForm.js';
 import UserForm from './pages/userForm.js';
 import LoginForm from './pages/loginForm.js';
+import Filters from './pages/filters.js';
 import HomeTest from './pages/homeTest.js';
 import {Routes, Route, useNavigate} from 'react-router-dom';
+import {Button, Form} from 'react-bootstrap';
 import apiWrapper from './server.js';
 import "./App.css"
 
@@ -25,6 +27,9 @@ function App() {
   function navigateToLoginForm(){
     navigate('/login');
   }
+  function navigateToFilters(){
+    navigate('/filters');
+  }
   function navigateToHomeTest(){
     navigate('/homeTest');
   }
@@ -42,16 +47,33 @@ function App() {
     getOrders();
   }, []);
 
+  function handleSearch()
+  {
+
+  }
+
   function Home() {
     return (
+      <>
       <h2>BlockMarket</h2>
+      <Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-success" onClick={handleSearch}>Search</Button>
+            <Button onClick={navigateToFilters}>Filters</Button>
+      </Form>
+      </>
     );
   }
 
   return (
     <div>
       <div>
-        <button onClick={navigateHome}>Home</button>
+        <Button onClick={navigateHome}>Home</Button>
         <hr />
         <button onClick={navigateToPostForm}>Create Post</button>
         <button onClick={navigateToUserForm}>Create Account</button>
@@ -68,6 +90,5 @@ function App() {
     </div>
   );
 }
-
 export default App;
 export function navigateHome() {}
