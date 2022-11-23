@@ -2,36 +2,22 @@ import React, { useEffect, useState } from 'react';
 import PostForm from './pages/postForm.js';
 import UserForm from './pages/userForm.js';
 import LoginForm from './pages/loginForm.js';
+import Home from './pages/home.js';
 import Filters from './pages/filters.js';
-import HomeTest from './pages/homeTest.js';
+import UserPage from './pages/userPage.js';
 import {Routes, Route, useNavigate} from 'react-router-dom';
-import {Button, Form} from 'react-bootstrap';
 import apiWrapper from './server.js';
 import "./App.css"
-
-import {Image, Navbar, Container, Nav, NavDropdown, Row, Col} from "react-bootstrap";
+import {Navbar, Container, Nav, Button} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import MyImage from './images/LegoImage.jpg';
 
 function App() {
   const navigate = useNavigate();
-  function navigateToPostForm(){
-    navigate('/createpost');
-  }
-  function navigateHome(){
-    navigate('/');
-  }
-  function navigateToUserForm(){
-    navigate('/createuser');
-  }
   function navigateToLoginForm(){
     navigate('/login');
   }
-  function navigateToFilters(){
-    navigate('/filters');
-  }
-  function navigateToHomeTest(){
-    navigate('/homeTest');
+  function navigateToUserPage(){
+    navigate('/userPage');
   }
   const [orders, setOrders] = useState([]);
 
@@ -47,46 +33,43 @@ function App() {
     getOrders();
   }, []);
 
-  function handleSearch()
-  {
-
-  }
-
-  function Home() {
-    return (
-      <>
-      <h2>BlockMarket</h2>
-      <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success" onClick={handleSearch}>Search</Button>
-            <Button onClick={navigateToFilters}>Filters</Button>
-      </Form>
-      </>
-    );
+  function PersonIcon({}){
+    return(
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+    </svg>
+    )
   }
 
   return (
-    <div>
-      <div>
-        <Button onClick={navigateHome}>Home</Button>
-        <hr />
-        <button onClick={navigateToPostForm}>Create Post</button>
-        <button onClick={navigateToUserForm}>Create Account</button>
-        <button onClick={navigateToLoginForm}>Login</button>
-        <button onClick={navigateToHomeTest}>Home Test</button>
-        <Routes>
+    <div className="App">
+      <header>
+      <Navbar bg="warning" expand="lg">
+      <Container>
+        <Navbar.Brand href="./home" className="navbar-a"><b>Block Market</b></Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="./home">Home</Nav.Link>
+            <Nav.Link href="./createpost">Create Post</Nav.Link>
+            <Nav.Link href="./createuser">Create Account</Nav.Link>
+            <Nav.Link href="./login">Login</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+      <Button onClick={navigateToUserPage}><PersonIcon></PersonIcon></Button>
+    </Navbar>
+      </header>
+      <Routes>
           <Route path="/createpost" element={<PostForm />} />
           <Route path="/createuser" element={<UserForm />} />
           <Route path="/login" element={<LoginForm />} />
-          <Route path="/homeTest" element={<HomeTest />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/filters" element={<Filters />} />
+          <Route path="/userPage" element={<UserPage />} />
           <Route path="/" element={<Home />} />
         </Routes>
-      </div>
     </div>
   );
 }
