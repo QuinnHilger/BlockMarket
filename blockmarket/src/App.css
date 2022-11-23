@@ -86,3 +86,34 @@ and Bootstrap */
   img{
     border: 5px solid #D21404;
   }
+
+  .profile-container{
+    display: flex;
+    justify-content: top;
+    align-items: top;
+    width: 35vw;
+    height: 75vw;
+  }
+
+  .profile-form {
+    width: 420px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    border-radius: 8px;
+    background-color: white;
+  }
+  .review-display{
+    width: 35vw;
+    margin-top: 30px;
+  }
+
+  .post-preview{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 35vw;
+  }
+  .cards-container{
+    justify-content: center;
+    align-items: top;
+  }

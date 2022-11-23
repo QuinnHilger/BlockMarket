@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Alert} from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom';
 /**
  * Form used to create a user
@@ -10,8 +11,10 @@ function UserForm({}) {
   const [formData, setFormData] = useState({
         email: "",
         password: "",
+        password2: "",
         name: "",
         address: "",
+        state: "",
         phoneNumber: ""
   });
   function navigateToLoginForm(){
@@ -29,13 +32,14 @@ function UserForm({}) {
     }));
   };
 
+
   /**
    * triggered when form is submitted
    * @param {React.MouseEvent<React.HTMLInputElement>} event 
    */
   async function handleSubmit(event) {
     event.preventDefault();
-    navigate('/');
+    navigate('/home');
     //initialize an account
   }
 
@@ -64,11 +68,22 @@ function UserForm({}) {
             <div className="form-group mt-3">
               <label>Password</label>
               <input
-                type="text"
+                type="password"
                 name="password"
                 onChange={handleFormChange}
                 placeholder="Password"
                 value={formData.password}
+                className="form-control mt-1"
+              />
+              </div>
+              <div className="form-group mt-3">
+              <label>Confirm Password</label>
+              <input
+                type="password"
+                name="password2"
+                onChange={handleFormChange}
+                placeholder="Password"
+                value={formData.password2}
                 className="form-control mt-1"
               />
           </div>
@@ -80,7 +95,7 @@ function UserForm({}) {
               onChange={handleFormChange}
               placeholder="John Smith"
               value={formData.name}
-              className="form-group mt-1"
+              className="form-control mt-1"
             />
           </div>
           <div className="form-group mt-3">
@@ -89,10 +104,72 @@ function UserForm({}) {
               type="text"
               name="address"
               onChange={handleFormChange}
-              placeholder="123 Park St, San Diego, CA"
+              placeholder="123 Park St, San Diego"
               value={formData.address}
-              className="form-group mt-1"
+              className="form-control mt-1"
             />
+          </div>
+          <div className="form-group mt-3">
+            <label>State</label>
+            <select
+              type="text"
+              name="state"
+              onChange={handleFormChange}
+              placeholder="CA"
+              value={formData.state}
+              class="form-control">
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">District Of Columbia</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+            </select>
           </div>
           <div className="form-group mt-3">
             <label>Phone Number</label>

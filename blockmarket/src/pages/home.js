@@ -112,7 +112,7 @@ function Home() {
               build and battle against the The Joker™, Bane™ and Gotham 
               City's most notorious villains for the ultimate victory.
               </Card.Text>
-            <Button variant="primary">Shop Batman</Button>
+            <Button variant="primary">Shop Super Heros</Button>
           </Card.Body>
           </Card>
           </Col>

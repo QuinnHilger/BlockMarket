@@ -66,7 +66,7 @@ function LoginForm({}) {
               <div className="form-group mt-3">
                 <label>Password</label>
                   <input
-                    type="text"
+                    type="password"
                     name="password"
                     onChange={handleFormChange}
                     placeholder="Enter Password"

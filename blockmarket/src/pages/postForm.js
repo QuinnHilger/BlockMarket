@@ -131,7 +131,6 @@ function PostForm({}) {
     <input
         type="file"
         class="form-control-file"
-        multiple
         name="pictures"
         onChange={handleFormChange}
         placeholder="Pictures Placeholder"

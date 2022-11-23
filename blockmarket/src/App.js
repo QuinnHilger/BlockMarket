@@ -13,9 +13,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const navigate = useNavigate();
-  function navigateToLoginForm(){
-    navigate('/login');
-  }
   function navigateToUserPage(){
     navigate('/userPage');
   }
