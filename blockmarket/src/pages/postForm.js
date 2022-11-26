@@ -83,6 +83,7 @@ function PostForm({}) {
         <option value="superheroes">Superheroes</option>
         <option value="architecture">Architecture</option>
         <option value="space">Space</option>
+        <option value="other">Other</option>
       </select>
       <input
         type="number"
