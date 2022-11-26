@@ -80,6 +80,7 @@ function App() {
           <Route path="/createuser" element={<UserForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/homeTest" element={<HomeTest />} />
+          <Route path="/filters" element={<Filters />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </div>
