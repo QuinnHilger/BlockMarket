@@ -1,59 +1,78 @@
 import React, { useState } from 'react';
-import {Alert} from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom';
+import {Card, Button, Container, Row, Col} from "react-bootstrap";
+import {Post, PostPreview} from './post.js';
 /**
  * Form used to create a user
  * @param {IProps} props an object containing props of type IProps
  */
 
-function UserForm({}) {
+//creating a user to test data
+let profile = {email: "bob_Doctor@gmail.com",
+password: "Password123",
+name: "Bob Bob",
+address: "59 Canda St",
+phoneNumber: "6038239393"}
+
+let review = {title: "Great product",
+score: 9,
+body: "Purchased last week as gift for my child."}
+
+function UserPage(props) {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-        email: "",
-        password: "",
-        password2: "",
-        name: "",
-        address: "",
-        state: "",
-        phoneNumber: ""
+  const [userData, setFormData] = useState({
+        email: profile.email,
+        password: profile.password,
+        name: profile.name,
+        address: profile.address,
+        phoneNumber: profile.phoneNumber
   });
-  function navigateToLoginForm(){
-    navigate('/login');
-  }
   /**
    * event handler for some change to the form (entry of new data, changes, etc.)
    * @param {React.FormEvent<HTMLInputElement>} event 
    */
-   function handleFormChange(event) {
-    const { name, type, value, checked } = event.target;
-    setFormData(prevData => ({
-      ...prevData,
-      [name]: type === "checkbox" ? checked : value
-    }));
+   const handleFormChange = (event) => {
+    setFormData({...userData, [event.target.name]: event.target.value});
   };
-
 
   /**
    * triggered when form is submitted
    * @param {React.MouseEvent<React.HTMLInputElement>} event 
    */
-  async function handleSubmit(event) {
-    event.preventDefault();
-    navigate('/home');
-    //initialize an account
+  function handleSubmit(event) {
+    event.preventDefault()
+    //Change account values
+  }
+  
+  function getReview(event){
+    event.preventDefault()
+    //fetch next review from profile
+  }
+
+  function DisplayReview(){
+
+    return(<Card className="review-display">
+    <Card.Body>
+      <Card.Title>{review.title}</Card.Title>
+      <Card.Subtitle className="mb-2 text-muted">{review.score} / 10.0</Card.Subtitle>
+      <Card.Text>
+        {review.body}
+      </Card.Text>
+      <Button onClick={getReview}>
+        Next Review
+      </Button>
+    </Card.Body>
+  </Card>);
   }
 
   return (
-    <div className="Auth-form-container">
-        <form className="Auth-form">
-          <div className="Auth-form-content">
-            <h3 calssName="Auth-form-title">Sign Up</h3>
-            <div className="text-center">
-              Already have an account?{" "}
-              <span className="link-primary" onClick={navigateToLoginForm}>
-                Sign In
-              </span>
-            </div>
+    <Container>
+      <Row>
+        <Col>
+          <div className="profile-container">
+        <form className="profile-form">
+          <div className="profile-form-content">
+            <h3 calssName="Auth-form-title">Update Profile</h3>
             <div className="form-group mt-3">
               <label>Email Address</label>
               <input
@@ -61,29 +80,18 @@ function UserForm({}) {
                 name="email"
                 onChange={handleFormChange}
                 placeholder="e.g johnsmith@gmail.com"
-                value={formData.email}
+                value={userData.email}
                 className="form-control mt-1"
               />
             </div>
             <div className="form-group mt-3">
               <label>Password</label>
               <input
-                type="password"
+                type="text"
                 name="password"
                 onChange={handleFormChange}
                 placeholder="Password"
-                value={formData.password}
-                className="form-control mt-1"
-              />
-              </div>
-              <div className="form-group mt-3">
-              <label>Confirm Password</label>
-              <input
-                type="password"
-                name="password2"
-                onChange={handleFormChange}
-                placeholder="Password"
-                value={formData.password2}
+                value={userData.password}
                 className="form-control mt-1"
               />
           </div>
@@ -94,7 +102,7 @@ function UserForm({}) {
               name="name"
               onChange={handleFormChange}
               placeholder="John Smith"
-              value={formData.name}
+              value={userData.name}
               className="form-control mt-1"
             />
           </div>
@@ -105,7 +113,7 @@ function UserForm({}) {
               name="address"
               onChange={handleFormChange}
               placeholder="123 Park St, San Diego"
-              value={formData.address}
+              value={userData.address}
               className="form-control mt-1"
             />
           </div>
@@ -116,7 +124,7 @@ function UserForm({}) {
               name="state"
               onChange={handleFormChange}
               placeholder="CA"
-              value={formData.state}
+              value={userData.state}
               class="form-control">
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
@@ -178,19 +186,38 @@ function UserForm({}) {
               name="phoneNumber"
               onChange={handleFormChange}
               placeholder="1234567890"
-              value={formData.phoneNumber}
+              value={userData.phoneNumber}
               className="form-control mt-1"
             />
           </div>
           <div className="d-grid gap-2 mt-3">
             <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
-            Create Account
+            Update Account
             </button>
           </div>
           </div>
         </form>
-      </div>
+          </div>
+        </Col>
+      <Col>
+      <DisplayReview></DisplayReview>
+      </Col>
+      </Row>
+      <Card className="test-center bg-warning text-white mt-3 py-2">
+            <Card.Body className="header-a">
+              {userData.name}'s Posts
+            </Card.Body>
+          </Card>
+      <Row>
+      <Col sm='6'>
+      <PostPreview></PostPreview>
+      </Col>
+      <Col sm='6'>
+      <PostPreview></PostPreview>
+      </Col>
+      </Row>
+    </Container>
   );
 }
 
-export default UserForm;
+export default UserPage;
