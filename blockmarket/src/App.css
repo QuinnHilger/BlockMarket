@@ -1,3 +1,4 @@
+
 /* Found template from supertokens.com "building a login screen with React
 and Bootstrap */
 .App {
@@ -92,7 +93,6 @@ and Bootstrap */
     justify-content: top;
     align-items: top;
     width: 35vw;
-    height: 75vw;
   }
 
   .profile-form {
@@ -116,4 +116,10 @@ and Bootstrap */
   .cards-container{
     justify-content: center;
     align-items: top;
+  }
+  
+  .form-title{
+    font-family: 'Times New Roman', Times, serif;
+    color: grey;
+    font-size: 16px;
   }

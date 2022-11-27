@@ -29,7 +29,7 @@ function PostPreview(){
       <ListGroup className="list-group-flush">
         <ListGroup.Item>Price: ${price}</ListGroup.Item>
         <ListGroup.Item>Theme: {theme}</ListGroup.Item>
-        <ListGroup.Item>Conditions: {condition}</ListGroup.Item>
+        <ListGroup.Item>Condition: {condition}</ListGroup.Item>
       </ListGroup>
       <Card.Body>
         <Card.Link href="#">View Full Post</Card.Link>
