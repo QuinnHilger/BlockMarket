@@ -1,6 +1,7 @@
 import LegoStarWars from '../images/LegoStarWars.jpeg';
 import {Card, ListGroup, Image, Button} from 'react-bootstrap';
 import {useNavigate, Route, Routes} from 'react-router-dom';
+import App from '../App.js';
 
 
 //fetch the post and fill in these variables
@@ -8,6 +9,7 @@ import {useNavigate, Route, Routes} from 'react-router-dom';
 function PostPreview({thisPost}){
   const navigate = useNavigate();
   function FullPost(){
+    App.setPost(thisPost);
     navigate('/fullPost');
   }
 
@@ -49,6 +51,10 @@ function PostPreview({thisPost}){
     )
 }
 function Post(displayPost){
+const navigate = useNavigate();
+function checkout(){
+  navigate('/checkout');
+}
 return(
   <div className="post-box">
   <Card className="post">
@@ -75,6 +81,9 @@ return(
           <label className="form-title">Condition: </label>
           <ListGroup.Item> {displayPost.condition}</ListGroup.Item>
         </ListGroup>
+        <Card.Body>
+        <button onClick={checkout}>Checkout</button>
+      </Card.Body>
       </Card>
       </div>
 );
