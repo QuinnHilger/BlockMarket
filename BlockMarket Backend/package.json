@@ -1,0 +1,18 @@
+{
+  "name": "cs-35l-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "brickScript.js",
+  "scripts": {
+    "devStart": "nodemon brickScript.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^6.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
