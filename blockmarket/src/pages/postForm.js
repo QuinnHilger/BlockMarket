@@ -20,7 +20,7 @@ function PostForm({}) {
         numPieces: "",
         condition: "",
         setNum: "",
-        pictures: null
+        picture: null
   });
   const [picture, setPicture] = useState(null);
 
@@ -29,7 +29,6 @@ function PostForm({}) {
    * @param {React.FormEvent<HTMLInputElement>} event 
    */
   function handleFormChange(event) {
-    console.log(picture)
     const { name, type, value, checked } = event.target;
     setFormData(prevData => ({
       ...prevData,

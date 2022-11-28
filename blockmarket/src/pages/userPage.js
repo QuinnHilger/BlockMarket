@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Card, Button, Container, Row, Col} from "react-bootstrap";
 import {Post, PostPreview} from './post.js';
+import LegoImage from '../images/LegoImage.jpg';
 /**
  * Form used to create a user
  * @param {IProps} props an object containing props of type IProps
@@ -13,6 +14,17 @@ password: "Password123",
 name: "Bob Bob",
 address: "59 Canda St",
 phoneNumber: "6038239393"}
+
+let testPost = {
+  image: {LegoImage},
+  title: "TESTING TITLE",
+  price: 99,
+  description: "BBBBBB",
+  theme: "Super Heros",
+  peices: 1,
+  setNumber: 1000,
+  condition: "Old"
+};
 
 let review = {title: "Great product",
 score: 9,
@@ -210,10 +222,10 @@ function UserPage(props) {
           </Card>
       <Row>
       <Col sm='6'>
-      <PostPreview></PostPreview>
+      <PostPreview thisPost={testPost}/>
       </Col>
       <Col sm='6'>
-      <PostPreview></PostPreview>
+      <PostPreview thisPost={testPost}/>
       </Col>
       </Row>
     </Container>

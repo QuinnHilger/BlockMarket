@@ -7,6 +7,8 @@ import {Button, Form, Dropdown, DropdownButton} from 'react-bootstrap';
  * @param {IProps} props an object containing props of type IProps
  */
 
+ 
+
 function Filters({}) {
   const navigate = useNavigate();
   const [filterData, setFilterData] = useState({
@@ -17,7 +19,7 @@ function Filters({}) {
         condition: "Any Condition",
         location: "Any Location"
   });
-
+  
   const handleSelectSortBy=(selection)=>{
     setFilterData(prevData => ({
       ...prevData,
@@ -65,8 +67,6 @@ function Filters({}) {
    */
   async function handleSubmit(event) {
     event.preventDefault();
-    //Check to make sure account exists, if it does, set current account to that account
-    //if it doesn't, show message of account doesn't exist
     navigate('/');
     //initialize an account
   }
