@@ -15,6 +15,7 @@ function PostForm({}) {
         price: "",
         description: "", 
         //profile to create later
+        //location from user
         time: "",
         theme: "",
         numPieces: "",

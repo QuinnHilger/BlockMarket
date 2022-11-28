@@ -9,7 +9,6 @@ import App from '../App.js';
 function PostPreview({thisPost}){
   const navigate = useNavigate();
   function FullPost(){
-    App.setPost(thisPost);
     navigate('/fullPost');
   }
 
@@ -70,8 +69,12 @@ return(
           </Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
+          <label className="form-title">Posted by: </label>
+          <ListGroup.Item>{displayPost.user}</ListGroup.Item>
           <label className="form-title">Price: </label>
           <ListGroup.Item>${displayPost.price}</ListGroup.Item>
+          <label className="form-title">Location: </label>
+          <ListGroup.Item>{displayPost.location}</ListGroup.Item>
           <label className="form-title">Theme: </label>
           <ListGroup.Item> {displayPost.theme}</ListGroup.Item>
           <label className="form-title">Number of Pieces: </label>

@@ -133,3 +133,16 @@ and Bootstrap */
     margin-top: 10px;
     width: 60%;
   }
+
+  .Auth-form2 {
+    margin-top: 20px;
+    box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    border-radius: 8px;
+    background-color: white;
+  }
+  .Auth-form-content2 {
+    padding-left: 8%;
+    padding-right: 8%;
+  }

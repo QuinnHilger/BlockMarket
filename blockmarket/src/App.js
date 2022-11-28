@@ -11,7 +11,7 @@ import apiWrapper from './server.js';
 import "./App.css"
 import {Navbar, Container, Nav, Button} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Post } from './pages/post.js';
+import { Post, PostPreview } from './pages/post.js';
 
 function App() {
   const navigate = useNavigate();
@@ -68,7 +68,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/filters" element={<Filters />} />
           <Route path="/userPage" element={<UserPage />} />
-          <Route path='/fullPost' element={<Post />}/>
+          <Route path='/fullPost' element={<Post displayPost={PostPreview.thisPost}/>}/>
           <Route path="/checkout" element={<CheckoutForm />} />
           <Route path="/" element={<Home />} />
         </Routes>

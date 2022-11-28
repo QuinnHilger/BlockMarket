@@ -23,7 +23,9 @@ let testPost = {
   theme: "Super Heros",
   peices: 1,
   setNumber: 1000,
-  condition: "Old"
+  condition: "Old",
+  user: "Bob Doctor",
+  location: "New Hampshire"
 };
 
 let review = {title: "Great product",

@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 function Checkout()
 {
+    const [review, setReview] = useState({
+        title: "",
+        rating: 0.0,
+        reviewBody: "",
+  });
   const navigate = useNavigate();
+
+  function handleFormChange(event) {
+    setReview(event.target.value);
+  };
   /**
    * triggered when form is submitted
    * @param {React.MouseEvent<React.HTMLInputElement>} event 
@@ -44,6 +53,46 @@ function Checkout()
                         </div>
                     </div>
                     </form>
+                    <div className="Auth-form2">
+                    <h4 className="Auth-form-content2">Leave a Review</h4>
+                    <form className="Auth-form-content2">
+                    <div classname="form-group mt-3">
+                        <label>Review Title</label>
+                        <input
+                            type="text"
+                            name="title"
+                            onChange={handleFormChange}
+                            placeholder="Create Review Title"
+                            value={review.title}
+                            className="form-control mt-1"
+                            />
+                    </div>
+                        <div className="form-group mt-3">
+                            <label>Rating</label>
+                            <input
+                            type="number"
+                            min="0.00"
+                            max="10"
+                            step="0.1"
+                            name="rating"
+                            onChange={handleFormChange}
+                            placeholder="xx / 10.0"
+                            value={review.rating}
+                            className="form-control mt-1"
+                        />
+                        </div>
+                        <div classname="form-group mt-3">
+                            <label>Review Description</label>
+                            <textarea
+                                name="description"
+                                onChange={handleFormChange}
+                                placeholder="Write Description"
+                                value={review.reviewBody}
+                                className="form-control mt-1"
+                                />
+                        </div>
+                    </form>
+                    </div>
                 </div>
                 <div class="col-md-8 order-md-1">
                     <h4 class="mb-3">Billing address</h4>
