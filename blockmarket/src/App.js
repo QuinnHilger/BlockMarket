@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PostForm from './pages/postForm.js';
 import UserForm from './pages/userForm.js';
 import LoginForm from './pages/loginForm.js';
+import CheckoutForm from './pages/checkoutForm.js';
 import Home from './pages/home.js';
 import Filters from './pages/filters.js';
 import UserPage from './pages/userPage.js';
@@ -53,6 +54,7 @@ function App() {
             <Nav.Link href="./createpost">Create Post</Nav.Link>
             <Nav.Link href="./createuser">Create Account</Nav.Link>
             <Nav.Link href="./login">Login</Nav.Link>
+            <Nav.Link href="./checkout">Checkout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -67,6 +69,7 @@ function App() {
           <Route path="/filters" element={<Filters />} />
           <Route path="/userPage" element={<UserPage />} />
           <Route path='/fullPost' element={<Post />}/>
+          <Route path="/checkout" element={<CheckoutForm />} />
           <Route path="/" element={<Home />} />
         </Routes>
     </div>
