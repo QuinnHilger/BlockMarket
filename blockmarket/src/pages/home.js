@@ -6,6 +6,7 @@ import LegoImage from '../images/LegoImage.jpg';
 import LegoStarWars from '../images/LegoStarWars.jpeg';
 import LegoBatman from '../images/LegoBatman.jpeg';
 import LegoCity from '../images/LegoCity.jpg';
+import {SearchBar, SearchPage} from './searchPage.js';
 import React, { useState } from 'react';
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import "../App.css";
@@ -13,53 +14,6 @@ import {Button, Image, Container, Row, Col, Card} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css"
 
 function Home() {
-  const navigate = useNavigate();
-
-  function SearchBar({}){
-    const [searchInput, setSearchInput] = useState("dog");
-    const handleSearch = (input) => {
-      console.log(searchInput);
-      let word = ""
-      for (let i = 0; i < searchInput.length; i++){
-        if(searchInput[i] == ' '){
-          word = "";
-          //check if database has post that contains word
-          //if it does, add it to posts to return
-          //find some way to return post to the post display page
-        }
-        else{
-          word = word + searchInput[i];
-        }
-      }
-      input.preventDefault();
-    };
-
-    
-  function navigateToFilters(){
-    navigate('../filters');
-  }
-    return(
-      <div class="wrapper">
-            <input
-              className="search"
-              type="text"
-              placeholder="Search for legos"
-              aria-label="Search"
-              value={searchInput}
-              onChange={(event) => {
-                setSearchInput(event.target.value)
-              }}
-            />
-            <div class="input-group-append">
-            <button class="btn btn-success" onClick={handleSearch}>Search</button>
-            </div>
-            <div class="input-group-append">
-            <Button onClick={navigateToFilters}>Filters</Button>
-            </div>
-      </div>
-    )
-  }
-
   return(
     <div className="App">
       <header>
@@ -162,6 +116,7 @@ function Home() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/homeTest" element={<Home />} />
           <Route path="/filters" element={<Filters />} />
+          <Route path="/searchPage" element={<SearchPage />} />
         </Routes>
     </div>
   );

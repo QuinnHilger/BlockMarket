@@ -80,6 +80,14 @@ and Bootstrap */
     font-size: 24px;
     text-align: center;
   }
+  .header-b{
+    font-family: Georgia;
+    color: #D21404;
+    font-weight: bold;
+    font-size: 48px;
+    text-align: center;
+    padding-top: 25%;
+  }
   .home-container{
     border:5px solid #efdd0e;
   }
@@ -145,4 +153,19 @@ and Bootstrap */
   .Auth-form-content2 {
     padding-left: 8%;
     padding-right: 8%;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  .post-container {
+    margin: auto;
+    margin-bottom: 30%;
+    margin-top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 40vh;
   }

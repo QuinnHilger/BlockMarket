@@ -6,8 +6,8 @@ import CheckoutForm from './pages/checkoutForm.js';
 import Home from './pages/home.js';
 import Filters from './pages/filters.js';
 import UserPage from './pages/userPage.js';
+import { SearchBar, SearchPage } from './pages/searchPage.js';
 import {Routes, Route, useNavigate} from 'react-router-dom';
-import apiWrapper from './server.js';
 import "./App.css"
 import {Navbar, Container, Nav, Button} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -18,19 +18,12 @@ function App() {
   function navigateToUserPage(){
     navigate('/userPage');
   }
-  const [orders, setOrders] = useState([]);
+  const [post, setPost] = useState([]);
 
   // the empty dependency list is important!
   // if we don 't include it, we enter an infinite loop,
   //since useEffect callback is called every time the component reloads (i.e. state changes)
-  useEffect(() => {
-    async function getOrders() {
-      const originalOrders = await apiWrapper.get("/post");
-      setOrders(originalOrders);
-    }
-
-    getOrders();
-  }, []);
+ 
 
   function PersonIcon({}){
     return(
@@ -68,8 +61,9 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/filters" element={<Filters />} />
           <Route path="/userPage" element={<UserPage />} />
-          <Route path='/fullPost' element={<Post displayPost={PostPreview.thisPost}/>}/>
+          <Route path='/fullPost' element={<Post displayPost={post}/>}/>
           <Route path="/checkout" element={<CheckoutForm />} />
+          <Route path="/searchPage" element={<SearchPage />} />
           <Route path="/" element={<Home />} />
         </Routes>
     </div>

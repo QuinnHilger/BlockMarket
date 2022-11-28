@@ -8,6 +8,7 @@ import App from '../App.js';
 
 function PostPreview({thisPost}){
   const navigate = useNavigate();
+  
   function FullPost(){
     navigate('/fullPost');
   }
