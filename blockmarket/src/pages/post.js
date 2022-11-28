@@ -55,6 +55,9 @@ const navigate = useNavigate();
 function checkout(){
   navigate('/checkout');
 }
+function goToUser(){
+  navigate('/otherUserPage');
+}
 return(
   <div className="post-box">
   <Card className="post">
@@ -71,7 +74,7 @@ return(
         </Card.Body>
         <ListGroup className="list-group-flush">
           <label className="form-title">Posted by: </label>
-          <ListGroup.Item>{displayPost.user}</ListGroup.Item>
+          <ListGroup.Item><Button onClick={goToUser}>{displayPost.user}</Button></ListGroup.Item>
           <label className="form-title">Price: </label>
           <ListGroup.Item>${displayPost.price}</ListGroup.Item>
           <label className="form-title">Location: </label>
