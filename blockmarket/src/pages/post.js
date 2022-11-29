@@ -1,7 +1,6 @@
 import LegoStarWars from '../images/LegoStarWars.jpeg';
 import {Card, ListGroup, Image, Button} from 'react-bootstrap';
 import {useNavigate, Route, Routes} from 'react-router-dom';
-import App from '../App.js';
 
 
 //fetch the post and fill in these variables
