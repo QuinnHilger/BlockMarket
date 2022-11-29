@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import styles from '../styles.module.css';
 import {useNavigate} from 'react-router-dom';
-import { Globals } from '../context';
+import { Globals } from '../App.js';
 import {Button, Dropdown, DropdownButton, Card, ListGroupItem, Container, Row, Col} from 'react-bootstrap';
 
 function Filters({}) {

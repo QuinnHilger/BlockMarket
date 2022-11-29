@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {Button} from "react-bootstrap";
 import {useNavigate} from 'react-router-dom';
 import LegoImage from '../images/LegoImage.jpg';
 import { PostPreview } from './post';
+import {Globals} from '../App.js'
 
 const POSTS = [
     {
@@ -11,7 +12,7 @@ const POSTS = [
         price: 99,
         description: "BBBBBB",
         theme: "Super Heros",
-        peices: 1,
+        numPieces: 1,
         setNumber: 1000,
         condition: "Old",
         user: "Bob Doctor",
@@ -22,8 +23,8 @@ const POSTS = [
         title: "TESTING TITLE",
         price: 99,
         description: "BBBBBB",
-        theme: "Super Heros",
-        peices: 1,
+        theme: "Star Wars",
+        numPieces: 1,
         setNumber: 1000,
         condition: "Old",
         user: "Bob Doctor",
@@ -34,8 +35,8 @@ const POSTS = [
         title: "TESTING TITLE",
         price: 99,
         description: "BBBBBB",
-        theme: "Super Heros",
-        peices: 1,
+        theme: "Lord of the Rings",
+        numPieces: 1,
         setNumber: 1000,
         condition: "Old",
         user: "Bob Doctor",
@@ -45,13 +46,13 @@ const POSTS = [
 
 function SearchBar({}){
     const navigate = useNavigate();
-    const [searchInput, setSearchInput] = useState("");
+    const { searchInput, setSearchInput } = useContext(Globals);
     const handleSearch = (input) => {
     navigate('/searchPage');
       console.log(searchInput);
       let word = ""
       for (let i = 0; i < searchInput.length; i++){
-        if(searchInput[i] == ' '){
+        if(searchInput[i] === ' '){
           word = "";
           //check if database has post that contains word
           //if it does, add it to posts to return

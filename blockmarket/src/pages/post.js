@@ -1,18 +1,21 @@
 import LegoStarWars from '../images/LegoStarWars.jpeg';
 import {Card, ListGroup, Image, Button} from 'react-bootstrap';
 import {useNavigate, Route, Routes} from 'react-router-dom';
+import {Globals} from '../App'
+import { useContext } from 'react';
 
 
 //fetch the post and fill in these variables
 
 function PostPreview({thisPost}){
+  const { setPost } = useContext(Globals);
   const navigate = useNavigate();
   function checkout(){
-    //set state to thisPost
+    setPost(thisPost);
     navigate('/checkout');
   }
   function FullPost(){
-    //set state to thisPost
+    setPost(thisPost);
     navigate('/fullPost');
   }
 
@@ -22,7 +25,7 @@ function PostPreview({thisPost}){
     let price = 10;
     let description = "CHECK CHECK CHECK";
     let theme = "Star Wars";
-    let peices = 100;
+    let numPieces = 100;
     let setNumber = 655;
     let condition = "New";
     return(
@@ -49,12 +52,13 @@ function PostPreview({thisPost}){
       </Card.Body>
     </Card>
     <Routes>
-    <Route path='/fullPost' element={<Post displayPost={thisPost}/>}/>
+    <Route path='/fullPost' element={<Post/>}/>
     </Routes>
     </div>
     )
 }
-function Post(displayPost){
+function Post(){
+const {post} = useContext(Globals);
 const navigate = useNavigate();
 function checkout(){
   navigate('/checkout');
@@ -71,26 +75,26 @@ return(
             rounded
             className=""/>
         <Card.Body>
-          <Card.Title>{displayPost.title}</Card.Title>
+          <Card.Title>{post.title}</Card.Title>
           <Card.Text>
-          {displayPost.description}
+          {post.description}
           </Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
           <label className="form-title">Posted by: </label>
-          <ListGroup.Item><Button onClick={goToUser}>{displayPost.user}</Button></ListGroup.Item>
+          <ListGroup.Item><Button onClick={goToUser}>{post.user}</Button></ListGroup.Item>
           <label className="form-title">Price: </label>
-          <ListGroup.Item>${displayPost.price}</ListGroup.Item>
+          <ListGroup.Item>${post.price}</ListGroup.Item>
           <label className="form-title">Location: </label>
-          <ListGroup.Item>{displayPost.location}</ListGroup.Item>
+          <ListGroup.Item>{post.location}</ListGroup.Item>
           <label className="form-title">Theme: </label>
-          <ListGroup.Item> {displayPost.theme}</ListGroup.Item>
+          <ListGroup.Item> {post.theme}</ListGroup.Item>
           <label className="form-title">Number of Pieces: </label>
-          <ListGroup.Item> {displayPost.numPieces}</ListGroup.Item>
+          <ListGroup.Item> {post.numPieces}</ListGroup.Item>
           <label className="form-title">Set Number: </label>
-          <ListGroup.Item>#{displayPost.setNum}</ListGroup.Item>
+          <ListGroup.Item>#{post.setNum}</ListGroup.Item>
           <label className="form-title">Condition: </label>
-          <ListGroup.Item> {displayPost.condition}</ListGroup.Item>
+          <ListGroup.Item> {post.condition}</ListGroup.Item>
         </ListGroup>
         <Card.Body>
         <Button onClick={checkout} className="shop-button">Checkout</Button>

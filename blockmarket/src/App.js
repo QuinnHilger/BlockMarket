@@ -6,18 +6,17 @@ import CheckoutForm from './pages/checkoutForm.js';
 import Home from './pages/home.js';
 import Filters from './pages/filters.js';
 import UserPage from './pages/userPage.js';
-<<<<<<< HEAD
-import {Globals} from './context.js'
-=======
 import OtherUserPage from './pages/otherUserPage.js';
 import Cart from './pages/cart.js';
->>>>>>> 3e4356b8b0ea35eb17cb3a78cc10342f27cff45b
 import { SearchBar, SearchPage } from './pages/searchPage.js';
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import "./App.css"
 import {Navbar, Container, Nav, Button} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Post, PostPreview } from './pages/post.js';
+
+
+export const Globals = React.createContext({});
 
 function App() {
   const navigate = useNavigate();
@@ -27,7 +26,17 @@ function App() {
   function navigateToCart(){
     navigate('/cart');
   }
-  const [post, setPost] = useState([]);
+  const [post, setPost] = useState({
+    title: "",
+    description: "",
+    user: "",
+    price: "",
+    location: "",
+    theme: "",
+    numPieces: "",
+    setNum: "",
+    condition: "",
+  });
   
   const [filterData, setFilterData] = useState({
     sortBy: "Date Added (newest)",
@@ -39,7 +48,6 @@ function App() {
   });
   
   const [searchInput, setSearchInput] = useState("");
- 
 
   function PersonIcon({}){
     return(
@@ -84,12 +92,12 @@ function App() {
           <Route path="/createuser" element={<UserForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/home" element={<Globals.Provider value = {{searchInput, setSearchInput, filterData}}><Home /></Globals.Provider>} />
-          <Route path="/filters" element={<Filters />} />
+          <Route path="/filters" element={<Globals.Provider value = {{ filterData, setFilterData}}><Filters /></Globals.Provider>} />
           <Route path="/userPage" element={<UserPage />} />
           <Route path="/otherUserPage" element={<OtherUserPage />} />
-          <Route path='/fullPost' element={<Post displayPost={post}/>}/>
+          <Route path='/fullPost' element={<Globals.Provider value = {{post}}><Post /></Globals.Provider>}/>
           <Route path="/checkout" element={<CheckoutForm />} />
-          <Route path="/searchPage" element={<SearchPage />} />
+          <Route path="/searchPage" element={<Globals.Provider value = {{searchInput, setSearchInput, filterData, setPost}}><SearchPage /></Globals.Provider>} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/" element={<Home />} />
         </Routes>
