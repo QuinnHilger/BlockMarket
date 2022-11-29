@@ -1,14 +1,8 @@
 import React, { useContext, useState } from 'react';
 import styles from '../styles.module.css';
 import {useNavigate} from 'react-router-dom';
-import {Button, Form, Dropdown, DropdownButton} from 'react-bootstrap';
 import { Globals } from '../context';
-/**
- * Form used to create a user
- * @param {IProps} props an object containing props of type IProps
- */
-
- 
+import {Button, Dropdown, DropdownButton, Card, ListGroupItem, Container, Row, Col} from 'react-bootstrap';
 
 function Filters({}) {
   const navigate = useNavigate();
@@ -65,89 +59,88 @@ function Filters({}) {
     navigate('/');
   }
 
-  function navigateToFilters(){
-    navigate('/Filters');
-  }
-
   return (
-    <>
-    <header>Filters</header>
-    <label for="sortBy">Sort By </label>
-    <DropdownButton
-      title= {filterData.sortBy}
-      name="sortBy"
-      onSelect={handleSelectSortBy}
-    >
-      <Dropdown.Item eventKey="Date Added (newest)">Date Added (newest)</Dropdown.Item>
-      <Dropdown.Item eventKey="Date Added (oldest)">Date Added (oldest)</Dropdown.Item>
-      <Dropdown.Item eventKey="Price: Low to High">Price: Low to High</Dropdown.Item>
-      <Dropdown.Item eventKey="Price: High to Low">Price: High to Low</Dropdown.Item>
-    </DropdownButton>
-
-    <label for="theme">Theme </label>
-    <DropdownButton
-      title= {filterData.theme}
-      name="theme"
-      onSelect={handleSelectTheme}
-    >
-      <Dropdown.Item eventKey="All Themes">All Themes</Dropdown.Item>
-      <Dropdown.Item eventKey="Star Wars">Star Wars</Dropdown.Item>
-      <Dropdown.Item eventKey="Ninjago">Ninjago</Dropdown.Item>
-      <Dropdown.Item eventKey="City">City</Dropdown.Item>
-      <Dropdown.Item eventKey="Lord of the Rings">Lord of the Rings</Dropdown.Item>
-      <Dropdown.Item eventKey="Harry Potter">Harry Potter</Dropdown.Item>
-      <Dropdown.Item eventKey="Superheroes">Superheroes</Dropdown.Item>
-      <Dropdown.Item eventKey="Architecture">Architecture</Dropdown.Item>
-      <Dropdown.Item eventKey="Space">Space</Dropdown.Item>
-      <Dropdown.Item eventKey="Other">Other</Dropdown.Item>
-    </DropdownButton>
-    
-    <label for="condition">Condition </label>
-    <DropdownButton
-      title= {filterData.condition}
-      name="condition"
-      onSelect={handleSelectCondition}
-    >
-      <Dropdown.Item eventKey="Any Condition">Any Condition</Dropdown.Item>
-      <Dropdown.Item eventKey="New">New</Dropdown.Item>
-      <Dropdown.Item eventKey="Used">Used</Dropdown.Item>
-    </DropdownButton>
-
-    <label for="location">Location </label>
-    <DropdownButton
-      title= {filterData.location}
-      name="location"
-      onSelect={handleSelectLocation}
-    >
-      <Dropdown.Item eventKey="Any Location">Any Location</Dropdown.Item>
-    </DropdownButton>
-    
-    <label for="minPieces">Number of Pieces: From </label>
-    <input
-        type="number"
-        min="0"
-        max="100000"
-        step="500"
-        name="minPieces"
-        onChange={handleFormChange}
-        placeholder="0"
-        value={filterData.minPieces}
-        className={styles["text-input"]}
-      />
-    <label for="maxPieces">To</label>
-    <input
-        type="number"
-        min="0"
-        max="100000"
-        step="500"
-        name="maxPieces"
-        onChange={handleFormChange}
-        placeholder="0"
-        value={filterData.maxPieces}
-        className={styles["text-input"]}
-      />
-    <Button variant="primary" onClick={handleSubmit}>Apply Filters</Button>
-    </>
+    <Card className="filter-container">
+          <Card.Body className="header-c">
+              Filters
+          </Card.Body>
+        <ListGroupItem className="filter-body">
+          <label for="theme" className="filter-title">Theme </label>
+          <DropdownButton
+            title= {filterData.theme}
+            name="theme"
+            onSelect={handleSelectTheme}
+          >
+            <Dropdown.Item eventKey="All Themes">All Themes</Dropdown.Item>
+            <Dropdown.Item eventKey="Star Wars">Star Wars</Dropdown.Item>
+            <Dropdown.Item eventKey="Ninjago">Ninjago</Dropdown.Item>
+            <Dropdown.Item eventKey="City">City</Dropdown.Item>
+            <Dropdown.Item eventKey="Lord of the Rings">Lord of the Rings</Dropdown.Item>
+            <Dropdown.Item eventKey="Harry Potter">Harry Potter</Dropdown.Item>
+            <Dropdown.Item eventKey="Superheroes">Superheroes</Dropdown.Item>
+            <Dropdown.Item eventKey="Architecture">Architecture</Dropdown.Item>
+            <Dropdown.Item eventKey="Space">Space</Dropdown.Item>
+            <Dropdown.Item eventKey="Other">Other</Dropdown.Item>
+          </DropdownButton>
+        </ListGroupItem>
+        <ListGroupItem className="filter-body">
+          <label for="condition" className="filter-title">Condition </label>
+          <DropdownButton
+            title= {filterData.condition}
+            name="condition"
+            onSelect={handleSelectCondition}
+          >
+            <Dropdown.Item eventKey="Any Condition">Any Condition</Dropdown.Item>
+            <Dropdown.Item eventKey="New">New</Dropdown.Item>
+            <Dropdown.Item eventKey="Used">Used</Dropdown.Item>
+          </DropdownButton>
+        </ListGroupItem>
+        <ListGroupItem className="filter-body">
+          <label for="location" className="filter-title">Location </label>
+          <DropdownButton
+            title= {filterData.location}
+            name="location"
+            onSelect={handleSelectLocation}>
+            <Dropdown.Item eventKey="Any Location">Any Location</Dropdown.Item>
+          </DropdownButton>
+        </ListGroupItem>
+        <ListGroupItem className="filter-body">
+        <label for="minPieces" className="filter-title">Number of Pieces:</label>
+        <Container>
+          <Row>
+          <Col>
+          <label for="maxPieces">From</label>
+        <input
+            type="number"
+            min="0"
+            max="100000"
+            step="500"
+            name="minPieces"
+            onChange={handleFormChange}
+            placeholder="0"
+            value={filterData.minPieces}
+            className={styles["text-input"]}
+          />
+          </Col>
+          <Col>
+        <label for="maxPieces">To</label>
+        <input
+            type="number"
+            min="0"
+            max="100000"
+            step="500"
+            name="maxPieces"
+            onChange={handleFormChange}
+            placeholder="0"
+            value={filterData.maxPieces}
+            className={styles["text-input"]}
+          />
+          </Col>
+          </Row>
+          </Container>
+        </ListGroupItem>
+      <Button className="filter-body" variant="primary" onClick={handleSubmit}>Apply Filters</Button>
+    </Card>
   );
 }
 

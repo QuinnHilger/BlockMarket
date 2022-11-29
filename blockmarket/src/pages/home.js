@@ -14,6 +14,12 @@ import {Button, Image, Container, Row, Col, Card} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css"
 
 function Home() {
+  const navigate = useNavigate();
+  function buttonSearch(event){
+    event.preventDefault();
+    //set filter theme to event.target.value
+    navigate('/searchPage');
+  }
   return(
     <div className="App">
       <header>
@@ -64,7 +70,7 @@ function Home() {
               Yoda, Grogu, Darth Vader, Emperor Palpatine, Princess Leia, 
               Han Solo, Chewbacca, R2-D2, C-3PO and more.
               </Card.Text>
-            <Button variant="primary">Shop Star Wars</Button>
+            <Button variant="primary" value="Star Wars" onClick={buttonSearch}>Shop Star Wars</Button>
           </Card.Body>
           </Card>
           </Col>
@@ -82,7 +88,7 @@ function Home() {
               build and battle against the The Joker™, Bane™ and Gotham 
               City's most notorious villains for the ultimate victory.
               </Card.Text>
-            <Button variant="primary">Shop Super Heros</Button>
+            <Button variant="primary" value="Superheros" onClick={buttonSearch}>Shop Super Heros</Button>
           </Card.Body>
           </Card>
           </Col>
@@ -103,7 +109,7 @@ function Home() {
               There are loads of ways to connect and style 
               your own personal LEGO® City. 
               </Card.Text>
-            <Button variant="primary">Shop City</Button>
+            <Button variant="primary" value="City" onClick={buttonSearch}>Shop City</Button>
           </Card.Body>
           </Card>
           </Col>

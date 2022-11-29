@@ -1,15 +1,18 @@
 import LegoStarWars from '../images/LegoStarWars.jpeg';
 import {Card, ListGroup, Image, Button} from 'react-bootstrap';
 import {useNavigate, Route, Routes} from 'react-router-dom';
-import App from '../App.js';
 
 
 //fetch the post and fill in these variables
 
 function PostPreview({thisPost}){
   const navigate = useNavigate();
-  
+  function checkout(){
+    //set state to thisPost
+    navigate('/checkout');
+  }
   function FullPost(){
+    //set state to thisPost
     navigate('/fullPost');
   }
 
@@ -41,7 +44,8 @@ function PostPreview({thisPost}){
         <ListGroup.Item>Condition: {thisPost.condition}</ListGroup.Item>
       </ListGroup>
       <Card.Body>
-        <button onClick={FullPost}>View Full Post</button>
+        <Button onClick={FullPost}>View Full Post</Button>
+        <Button onClick={checkout} className="shop-button">Purchase Post</Button>
       </Card.Body>
     </Card>
     <Routes>
@@ -54,6 +58,9 @@ function Post(displayPost){
 const navigate = useNavigate();
 function checkout(){
   navigate('/checkout');
+}
+function goToUser(){
+  navigate('/otherUserPage');
 }
 return(
   <div className="post-box">
@@ -71,7 +78,7 @@ return(
         </Card.Body>
         <ListGroup className="list-group-flush">
           <label className="form-title">Posted by: </label>
-          <ListGroup.Item>{displayPost.user}</ListGroup.Item>
+          <ListGroup.Item><Button onClick={goToUser}>{displayPost.user}</Button></ListGroup.Item>
           <label className="form-title">Price: </label>
           <ListGroup.Item>${displayPost.price}</ListGroup.Item>
           <label className="form-title">Location: </label>
@@ -86,7 +93,7 @@ return(
           <ListGroup.Item> {displayPost.condition}</ListGroup.Item>
         </ListGroup>
         <Card.Body>
-        <button onClick={checkout}>Checkout</button>
+        <Button onClick={checkout} className="shop-button">Checkout</Button>
       </Card.Body>
       </Card>
       </div>

@@ -88,6 +88,14 @@ and Bootstrap */
     text-align: center;
     padding-top: 25%;
   }
+  .header-c{
+    font-family: Georgia;
+    color: #D21404;
+    font-weight: bold;
+    font-size: 48px;
+    text-align: center;
+    padding-top: 3%;
+  }
   .home-container{
     border:5px solid #efdd0e;
   }
@@ -112,6 +120,10 @@ and Bootstrap */
   }
   .review-display{
     width: 35vw;
+    margin-top: 30px;
+  }
+  .review-display2{
+    width: 25vw;
     margin-top: 30px;
   }
 
@@ -168,4 +180,41 @@ and Bootstrap */
     align-items: center;
     width: 40vw;
     height: 40vh;
+  }
+  .post-container2 {
+    margin: auto;
+    margin-bottom: 60%;
+    margin-top: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 40vh;
+  }
+  .shop-button {
+    background-color:#D21404;
+    color: white;
+    border: 2px solid yellow;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    margin-left: 5px;
+
+  }
+  .filter-title{
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    font-size: 28px;
+  }
+  .filter-body{
+    margin: auto;
+  }
+  .filter-container {
+    margin-top: 10%;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding-bottom: 10%;
+    justify-content: center;
+    display: flex;
+    width: 75vw;
+    box-shadow: rgb(0 0 0 / 16%) 3px 3px 20px;
+    border-radius: 8px;
   }
