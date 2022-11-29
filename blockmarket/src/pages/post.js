@@ -8,8 +8,12 @@ import App from '../App.js';
 
 function PostPreview({thisPost}){
   const navigate = useNavigate();
-  
+  function checkout(){
+    //set state to thisPost
+    navigate('/checkout');
+  }
   function FullPost(){
+    //set state to thisPost
     navigate('/fullPost');
   }
 
@@ -41,7 +45,8 @@ function PostPreview({thisPost}){
         <ListGroup.Item>Condition: {thisPost.condition}</ListGroup.Item>
       </ListGroup>
       <Card.Body>
-        <button onClick={FullPost}>View Full Post</button>
+        <Button onClick={FullPost}>View Full Post</Button>
+        <Button onClick={checkout} className="shop-button">Purchase Post</Button>
       </Card.Body>
     </Card>
     <Routes>
@@ -89,7 +94,7 @@ return(
           <ListGroup.Item> {displayPost.condition}</ListGroup.Item>
         </ListGroup>
         <Card.Body>
-        <button onClick={checkout}>Checkout</button>
+        <Button onClick={checkout} className="shop-button">Checkout</Button>
       </Card.Body>
       </Card>
       </div>
