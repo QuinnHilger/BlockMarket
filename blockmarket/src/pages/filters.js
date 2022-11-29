@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from '../styles.module.css';
 import {useNavigate} from 'react-router-dom';
 import {Button, Form, Dropdown, DropdownButton} from 'react-bootstrap';
+import { Globals } from '../context';
 /**
  * Form used to create a user
  * @param {IProps} props an object containing props of type IProps
@@ -11,14 +12,7 @@ import {Button, Form, Dropdown, DropdownButton} from 'react-bootstrap';
 
 function Filters({}) {
   const navigate = useNavigate();
-  const [filterData, setFilterData] = useState({
-        sortBy: "Date Added (newest)",
-        theme: "All Themes",
-        minPieces: "0",
-        maxPieces: "10000",
-        condition: "Any Condition",
-        location: "Any Location"
-  });
+  const {filterData, setFilterData} = useContext(Globals);
   
   const handleSelectSortBy=(selection)=>{
     setFilterData(prevData => ({
@@ -44,7 +38,7 @@ function Filters({}) {
   const handleSelectLocation=(selection)=>{
     setFilterData(prevData => ({
       ...prevData,
-      condition: selection
+      location: selection
     }));
   }
 
@@ -67,8 +61,8 @@ function Filters({}) {
    */
   async function handleSubmit(event) {
     event.preventDefault();
+
     navigate('/');
-    //initialize an account
   }
 
   function navigateToFilters(){
@@ -152,7 +146,6 @@ function Filters({}) {
         value={filterData.maxPieces}
         className={styles["text-input"]}
       />
-
     <Button variant="primary" onClick={handleSubmit}>Apply Filters</Button>
     </>
   );

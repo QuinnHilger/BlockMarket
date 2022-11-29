@@ -6,6 +6,7 @@ import CheckoutForm from './pages/checkoutForm.js';
 import Home from './pages/home.js';
 import Filters from './pages/filters.js';
 import UserPage from './pages/userPage.js';
+import {Globals} from './context.js'
 import { SearchBar, SearchPage } from './pages/searchPage.js';
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import "./App.css"
@@ -19,10 +20,17 @@ function App() {
     navigate('/userPage');
   }
   const [post, setPost] = useState([]);
-
-  // the empty dependency list is important!
-  // if we don 't include it, we enter an infinite loop,
-  //since useEffect callback is called every time the component reloads (i.e. state changes)
+  
+  const [filterData, setFilterData] = useState({
+    sortBy: "Date Added (newest)",
+    theme: "All Themes",
+    minPieces: "0",
+    maxPieces: "10000",
+    condition: "Any Condition",
+    location: "Any Location"
+  });
+  
+  const [searchInput, setSearchInput] = useState("");
  
 
   function PersonIcon({}){
@@ -58,7 +66,7 @@ function App() {
           <Route path="/createpost" element={<PostForm />} />
           <Route path="/createuser" element={<UserForm />} />
           <Route path="/login" element={<LoginForm />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Globals.Provider value = {{searchInput, setSearchInput, filterData}}><Home /></Globals.Provider>} />
           <Route path="/filters" element={<Filters />} />
           <Route path="/userPage" element={<UserPage />} />
           <Route path='/fullPost' element={<Post displayPost={post}/>}/>
