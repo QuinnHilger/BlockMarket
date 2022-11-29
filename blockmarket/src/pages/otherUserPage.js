@@ -9,7 +9,7 @@ const POSTS = [
     {
         image: {LegoImage},
         title: "TESTING TITLE",
-        price: 99,
+        price: 100,
         description: "BBBBBB",
         theme: "Super Heros",
         peices: 1,
@@ -21,7 +21,7 @@ const POSTS = [
       {
         image: {LegoImage},
         title: "TESTING TITLE",
-        price: 99,
+        price: 10,
         description: "BBBBBB",
         theme: "Super Heros",
         peices: 1,
@@ -33,7 +33,7 @@ const POSTS = [
       {
         image: {LegoImage},
         title: "TESTING TITLE",
-        price: 99,
+        price: 55,
         description: "BBBBBB",
         theme: "Super Heros",
         peices: 1,
@@ -70,12 +70,12 @@ const REVIEWS = [
     body: "Purchased last week as gift for my child."
 },
 
-{title: "Great product",
-score: 9,
+{title: "Mid product",
+score: 8,
 body: "Purchased last week as gift for my child."},
 
 {title: "Great product",
-score: 9,
+score: 7,
 body: "Purchased last week as gift for my child."},
 ]
 

@@ -6,6 +6,7 @@ import CheckoutForm from './pages/checkoutForm.js';
 import Home from './pages/home.js';
 import Filters from './pages/filters.js';
 import UserPage from './pages/userPage.js';
+import OtherUserPage from './pages/otherUserPage.js';
 import { SearchBar, SearchPage } from './pages/searchPage.js';
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import "./App.css"
@@ -61,6 +62,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/filters" element={<Filters />} />
           <Route path="/userPage" element={<UserPage />} />
+          <Route path="/otherUserPage" element={<OtherUserPage />} />
           <Route path='/fullPost' element={<Post displayPost={post}/>}/>
           <Route path="/checkout" element={<CheckoutForm />} />
           <Route path="/searchPage" element={<SearchPage />} />
