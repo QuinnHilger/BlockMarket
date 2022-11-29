@@ -7,17 +7,23 @@ import LegoStarWars from '../images/LegoStarWars.jpeg';
 import LegoBatman from '../images/LegoBatman.jpeg';
 import LegoCity from '../images/LegoCity.jpg';
 import {SearchBar, SearchPage} from './searchPage.js';
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import "../App.css";
 import {Button, Image, Container, Row, Col, Card} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css"
+import {Globals} from '../App.js';
 
 function Home() {
   const navigate = useNavigate();
+  const {filterData, setFilterData} = useContext(Globals);
   function buttonSearch(event){
     event.preventDefault();
     //set filter theme to event.target.value
+    setFilterData(prevData => ({
+      ...prevData,
+      theme: event.target.value
+    }));
     navigate('/searchPage');
   }
   return(

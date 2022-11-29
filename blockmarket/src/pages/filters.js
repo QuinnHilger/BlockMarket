@@ -55,7 +55,7 @@ function Filters({}) {
    */
   async function handleSubmit(event) {
     event.preventDefault();
-
+    console.log(filterData);
     navigate('/');
   }
 
