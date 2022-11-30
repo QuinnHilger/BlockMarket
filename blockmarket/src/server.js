@@ -1,3 +1,4 @@
+/*
 import express from 'express';
 import mongoose from 'mongoose'; 
 require("dotenv").config(); 
@@ -48,7 +49,7 @@ const User = mongoose.model('user', userSchema);
 const Post = mongoose.model('user', postSchema);
 export { User, app, Post };
 
-/*
+
 const port = 3000;
 log.save().then(() => console.log("One entry added"), (err) => console.log(err));
 

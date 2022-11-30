@@ -2,17 +2,12 @@ import React, { useState } from 'react';
 import {Alert} from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom';
 import LegoImage from '../images/LegoImage.jpg';
-import { User, app } from './server.js';
-import express from 'express';
-require("dotenv").config(); 
+//import express from 'express';
+
 /**
  * Form used to create a user
  * @param {IProps} props an object containing props of type IProps
  */
-
- mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
- .then(() => console.log("MongoDB connected"))
- .catch(err => console.log(err));
 
 function UserForm({}) {
   const navigate = useNavigate();
@@ -48,10 +43,6 @@ function UserForm({}) {
     event.preventDefault();
     navigate('/home');
     //initialize an account
-    var use = new User({
-      formData
-    });
-    use.save().then(() => console.log("One entry added"), (err) => console.log(err));
   }
 
   return (

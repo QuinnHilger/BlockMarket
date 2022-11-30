@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
-import mongoose from 'mongoose'; 
-import { app, User } from './server.js';
-import express from 'express';
-
-require("dotenv").config(); 
-mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
-.then(() => console.log("MongoDB connected"))
-.catch(err => console.log(err));
 
 /**
  * Form used to create a user
@@ -42,22 +34,6 @@ function LoginForm({}) {
     event.preventDefault();
     //Check to make sure account exists, if it does, set current account to that account
     //if it doesn't, show message of account doesn't exist
-    app.get('/', (req, res) => {
-      User.find({email: formData.email, passowrd: formData.password}, (err, found) => {
-          if (!err) {
-              res.send(found);
-          }
-          console.log(err);
-          res.send("Some error occured!")
-      }).catch(err => console.log("Error occured, " + err));
-    });
-
-    if (res.text === "") {
-      console.log("The account doesn't exist.\n");
-    }
-    else{
-      
-    }
     navigate('/');
     //initialize an account
   }
