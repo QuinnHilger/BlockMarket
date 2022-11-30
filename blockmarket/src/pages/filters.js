@@ -7,13 +7,7 @@ import {Button, Dropdown, DropdownButton, Card, ListGroupItem, Container, Row, C
 function Filters({}) {
   const navigate = useNavigate();
   const {filterData, setFilterData} = useContext(Globals);
-  
-  const handleSelectSortBy=(selection)=>{
-    setFilterData(prevData => ({
-      ...prevData,
-      sortBy: selection
-    }));
-  }
+
 
   const handleSelectTheme=(selection)=>{
     setFilterData(prevData => ({
