@@ -42,6 +42,7 @@ const userSchema = new mongoose.Schema({
 
 })
 
+const User = mongoose.model({'User', UserSchema)
 
 userSchema.virtual("namedEmail").get(function () {
     return '${this.name} <${this.email}>'
