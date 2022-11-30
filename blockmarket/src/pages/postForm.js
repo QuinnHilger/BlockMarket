@@ -3,10 +3,14 @@ import styles from '../styles.module.css';
 import LegoImage from '../images/LegoImage.jpg';
 import {Form, useNavigate} from 'react-router-dom';
 import {Container, Row, Col, Card, ListGroup, Image} from 'react-bootstrap';
+import { Post, app } from './server.js';
 /**
  * Form used to create a post
  * @param {IProps} props an object containing props of type IProps
  */
+ mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+ .then(() => console.log("MongoDB connected"))
+ .catch(err => console.log(err));
 
 function PostForm({}) {
   const navigate = useNavigate();
@@ -45,6 +49,10 @@ function PostForm({}) {
     const form = event.currentTarget;
     event.preventDefault();
     //initialize post with variables
+    var post = new Post({
+      formData
+    });
+    post.save().then(() => console.log("One entry added"), (err) => console.log(err));
     navigate('/');
   }
 
