@@ -46,7 +46,7 @@ const POSTS = [
 
 function SearchBar({}){
     const navigate = useNavigate();
-    const { searchInput, setSearchInput } = useContext(Globals);
+    const { searchInput, setSearchInput} = useContext(Globals);
     const handleSearch = (input) => {
     navigate('/searchPage');
       console.log(searchInput);

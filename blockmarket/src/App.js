@@ -98,7 +98,7 @@ function App() {
           <Route path='/fullPost' element={<Globals.Provider value = {{post}}><Post /></Globals.Provider>}/>
           <Route path="/checkout" element={<CheckoutForm />} />
           <Route path="/searchPage" element={<Globals.Provider value = {{searchInput, setSearchInput, filterData, setPost}}><SearchPage /></Globals.Provider>} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/cart" element={<Globals.Provider value = {{setPost}}> <Cart /></Globals.Provider>} />
           <Route path="/" element={<Home />} />
         </Routes>
     </div>
