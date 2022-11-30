@@ -12,7 +12,6 @@ function UserForm({}) {
   const [formData, setFormData] = useState({
         email: "",
         password: "",
-        password2: "",
         name: "",
         address: "",
         state: "",
@@ -77,17 +76,6 @@ function UserForm({}) {
                 className="form-control mt-1"
               />
               </div>
-              <div className="form-group mt-3">
-              <label>Confirm Password</label>
-              <input
-                type="password"
-                name="password2"
-                onChange={handleFormChange}
-                placeholder="Password"
-                value={formData.password2}
-                className="form-control mt-1"
-              />
-          </div>
           <div className="form-group mt-3">
             <label>Full Name</label>
             <input

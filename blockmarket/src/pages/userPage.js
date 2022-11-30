@@ -28,12 +28,25 @@ let testPost = {
   location: "New Hampshire"
 };
 
-let review = {title: "Great product",
-score: 9,
-body: "Purchased last week as gift for my child."}
+const REVIEWS = [
+  {
+      title: "Great product",
+      score: 9,
+      body: "Purchased last week as gift for my child."
+  },
+  
+  {title: "Mid product",
+  score: 8,
+  body: "Purchased last week as gift for my child."},
+  
+  {title: "Great product",
+  score: 7,
+  body: "Purchased last week as gift for my child."},
+  ]
 
 function UserPage(props) {
   const navigate = useNavigate();
+  const [foundReviews, setFoundReviews] = useState(REVIEWS);
   const [userData, setFormData] = useState({
         email: profile.email,
         password: profile.password,
@@ -63,18 +76,16 @@ function UserPage(props) {
     //fetch next review from profile
   }
 
-  function DisplayReview(){
-
-    return(<Card className="review-display">
+  function DisplayReview({thisReview}){
+    console.log(thisReview);
+    console.log(thisReview.title);
+    return(<Card className="review-display2">
     <Card.Body>
-      <Card.Title>{review.title}</Card.Title>
-      <Card.Subtitle className="mb-2 text-muted">{review.score} / 10.0</Card.Subtitle>
+      <Card.Title>{thisReview.title}</Card.Title>
+      <Card.Subtitle className="mb-2 text-muted">{thisReview.score} / 10.0</Card.Subtitle>
       <Card.Text>
-        {review.body}
+        {thisReview.body}
       </Card.Text>
-      <Button onClick={getReview}>
-        Next Review
-      </Button>
     </Card.Body>
   </Card>);
   }
@@ -214,7 +225,25 @@ function UserPage(props) {
           </div>
         </Col>
       <Col>
-      <DisplayReview></DisplayReview>
+      <Card className="test-center bg-warning text-white mt-3 py-2">
+            <Card.Body className="header-a">
+              {userData.name}'s Reviews
+            </Card.Body>
+        </Card>
+        <div>
+            {foundReviews.length > 0 ? (foundReviews.map((review) => (
+                <ul>
+                <li key={review}>
+                <span>
+                    <DisplayReview thisReview={review}></DisplayReview>
+                </span>
+            </li>
+            </ul>
+            ))
+            ) : (
+                <h1 className="header-b">No Reviews Found</h1>
+            )}
+        </div>
       </Col>
       </Row>
       <Card className="test-center bg-warning text-white mt-3 py-2">
