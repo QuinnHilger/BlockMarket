@@ -91,12 +91,12 @@ function App() {
           <Route path="/createpost" element={<PostForm />} />
           <Route path="/createuser" element={<UserForm />} />
           <Route path="/login" element={<LoginForm />} />
-          <Route path="/home" element={<Globals.Provider value = {{searchInput, setSearchInput, filterData}}><Home /></Globals.Provider>} />
+          <Route path="/home" element={<Globals.Provider value = {{searchInput, setSearchInput, filterData, setFilterData}}><Home /></Globals.Provider>} />
           <Route path="/filters" element={<Globals.Provider value = {{ filterData, setFilterData}}><Filters /></Globals.Provider>} />
           <Route path="/userPage" element={<UserPage />} />
           <Route path="/otherUserPage" element={<OtherUserPage />} />
           <Route path='/fullPost' element={<Globals.Provider value = {{post}}><Post /></Globals.Provider>}/>
-          <Route path="/checkout" element={<CheckoutForm />} />
+          <Route path="/checkout" element={<Globals.Provider value = {{post}}><CheckoutForm /></Globals.Provider>} />
           <Route path="/searchPage" element={<Globals.Provider value = {{searchInput, setSearchInput, filterData, setPost}}><SearchPage /></Globals.Provider>} />
           <Route path="/cart" element={<Globals.Provider value = {{setPost}}> <Cart /></Globals.Provider>} />
           <Route path="/" element={<Home />} />
