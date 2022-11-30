@@ -31,11 +31,14 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    picture: ProcessingInstruction,
+    picture: Picture,
 
     review: {
-        type: String,
+        type: Number,
         required: true,
+        min: 1,
+        max: 10,
+ 
     },
     createdAt: {
         type: Date,
