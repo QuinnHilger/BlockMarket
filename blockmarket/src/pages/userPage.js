@@ -253,7 +253,7 @@ function UserPage(props) {
           </Card>
       <Row>
       <Col sm='6'>
-      <PostPreview thisPost={testPost}/>
+      <PostPreview thisPost={testPost}></PostPreview>
       </Col>
       <Col sm='6'>
       <PostPreview thisPost={testPost}/>
