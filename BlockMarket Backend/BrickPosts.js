@@ -30,7 +30,12 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    picture: Picture,
+    
+    pictureUrl: {
+    type: String,
+    required: true,
+    
+    },
 
     review: {
         type: Number,
@@ -39,6 +44,7 @@ const PostSchema = new mongoose.Schema({
         max: 10,
  
     },
+    
     createdAt: {
         type: Date,
         default: () => Date.now(),
