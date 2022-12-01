@@ -9,16 +9,24 @@ require("dotenv").config()
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect(process.env.MONGO_DB_URI,{
-    userNewParser: true,
-    userCreateIndex: true,
-    userUnifiedTopology: true,
-
-})
+mongoose.connect(
+  'mongodb://localhost/testdb',
+  () => {
+    console.log('connected');
+  },
+  (e) => console.error(e)
+);
 
 mongoose.connection.once("open", ()=> {
     console.log("Connected to MongoDB!")
 })
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cors());
+app.use(morgan('tiny'));
+
+
 
 app.post("/createUser", async (req,res) =>{
     const {email, password} = req.body
@@ -42,6 +50,12 @@ app.post("/createUser", async (req,res) =>{
 
 
 })
+
+app.listen(3000, () => {
+  console.log('Server Listening on port 3000');
+});
+
+module.exports = app;
 
 
 
