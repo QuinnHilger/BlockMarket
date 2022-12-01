@@ -51,8 +51,11 @@ function SearchBar({}){
     navigate('/searchPage');
       console.log(searchInput);
       let word = ""
+      let words = [];
+      let foundPosts = [];
       for (let i = 0; i < searchInput.length; i++){
-        if(searchInput[i] === ' '){
+        if(searchInput[i] === ' ' || i == searchInput.length - 1){
+          words.push(word);
           word = "";
           //check if database has post that contains word
           //if it does, add it to posts to return
@@ -62,6 +65,16 @@ function SearchBar({}){
           word = word + searchInput[i];
         }
       }
+      for(let i=0; i<POSTS.length; i++){
+        for(let j=0; j<words.length; j++){
+        word = words[j];
+        if(POSTS[i].title.includes(word) || POSTS[i].description.includes(word)){
+          //test filters
+          foundPosts.push(POSTS[i]);
+        }
+      }
+      }
+      console.log(foundPosts);
       input.preventDefault();
     };
 
