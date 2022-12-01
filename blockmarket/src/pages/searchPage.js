@@ -11,7 +11,7 @@ const POSTS = [
         title: "TESTING TITLE",
         price: 99,
         description: "BBBBBB",
-        theme: "Super Heros",
+        theme: "Superheros",
         numPieces: 1,
         setNumber: 1000,
         condition: "Old",
@@ -43,35 +43,46 @@ const POSTS = [
         location: "New Hampshire"
       }
     ]
-
+let foundPosts = [];
 function SearchBar({}){
     const navigate = useNavigate();
     const { searchInput, setSearchInput} = useContext(Globals);
+    const {filterData} = useContext(Globals);
     const handleSearch = (input) => {
     navigate('/searchPage');
       console.log(searchInput);
       let word = ""
       let words = [];
-      let foundPosts = [];
+      foundPosts = [];
+      if(searchInput.length == 0){
+        for(let i=0; i<POSTS.length; i++){
+          if((filterData.theme == "All Themes" || filterData.theme == POSTS[i].theme) && (filterData.condition == "Any Condition" || filterData.condition == POSTS[i].condition) 
+        && (filterData.location == "Any Location" || filterData.location == POSTS[i].location) && (filterData.minPieces <= POSTS[i].numPieces && filterData.maxPieces >= POSTS[i].numPieces)){
+          foundPosts.push(POSTS[i]);
+        }
+        }
+      }
       for (let i = 0; i < searchInput.length; i++){
         if(searchInput[i] === ' ' || i == searchInput.length - 1){
           words.push(word);
           word = "";
-          //check if database has post that contains word
-          //if it does, add it to posts to return
-          //find some way to return post to the post display page
         }
         else{
           word = word + searchInput[i];
         }
       }
       for(let i=0; i<POSTS.length; i++){
+        console.log(filterData);
+        console.log(POSTS[i].theme);
+        if((filterData.theme == "All Themes" || filterData.theme == POSTS[i].theme) && (filterData.condition == "Any Condition" || filterData.condition == POSTS[i].condition) 
+        && (filterData.location == "Any Location" || filterData.location == POSTS[i].location) && (filterData.minPieces <= POSTS[i].numPieces && filterData.maxPieces >= POSTS[i].numPieces)){
         for(let j=0; j<words.length; j++){
         word = words[j];
         if(POSTS[i].title.includes(word) || POSTS[i].description.includes(word)){
           //test filters
           foundPosts.push(POSTS[i]);
         }
+      }
       }
       }
       console.log(foundPosts);
@@ -91,7 +102,7 @@ function SearchBar({}){
               aria-label="Search"
               value={searchInput}
               onChange={(event) => {
-                setSearchInput(event.target.value)
+              setSearchInput(event.target.value)
               }}
             />
             <div class="input-group-append">
@@ -105,7 +116,6 @@ function SearchBar({}){
   }
   function SearchPage({searchInput}){
     const navigate = useNavigate();
-    const [foundPosts, setFoundPosts] = useState(POSTS);
       return(
         <>
         <SearchBar></SearchBar>
