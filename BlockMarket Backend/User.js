@@ -35,7 +35,21 @@ const userSchema = new mongoose.Schema({
          type: [mongoose.Schema.Types.ObjectId],
          ref: "BrickPosts",
 
-    },   {
+    }, 
+    
+    token: {
+        type: String,
+        required: false,
+    },
+    
+    cart: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'BrickPosts',
+    
+    }
+    
+    
+    {
     
     timestamps: true,
     
