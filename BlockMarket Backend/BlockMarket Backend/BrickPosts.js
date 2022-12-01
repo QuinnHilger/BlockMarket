@@ -43,9 +43,16 @@ const PostSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: () => Date.now(),
-    },
+    }, {
+    
+    timestamps: true,
 
 })
+
+
+
+const brickPost = mongoose.model('brickPost', PostSchema)
+
 
 PostSchema.statics.findByTitle = function(title) {
     return this.where({ title: new RegExp(title, "i")})

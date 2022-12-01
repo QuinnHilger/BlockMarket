@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import {Alert} from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom';
 import LegoImage from '../images/LegoImage.jpg';
+//import express from 'express';
+
 /**
  * Form used to create a user
  * @param {IProps} props an object containing props of type IProps

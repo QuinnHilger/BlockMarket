@@ -3,10 +3,12 @@ import styles from '../styles.module.css';
 import LegoImage from '../images/LegoImage.jpg';
 import {Form, useNavigate} from 'react-router-dom';
 import {Container, Row, Col, Card, ListGroup, Image} from 'react-bootstrap';
+
 /**
  * Form used to create a post
  * @param {IProps} props an object containing props of type IProps
  */
+
 
 function PostForm({}) {
   const navigate = useNavigate();

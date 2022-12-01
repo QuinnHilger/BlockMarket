@@ -1,30 +1,60 @@
-/**
- * THIS IS NOT A REAL SERVER
- * THIS IS DESIGNED TO MIMIC A REAL EXPRESS SERVER FOR THE PURPOSES OF THE DEMO
- * IN YOUR PROJECT YOU SHOULD REPLACE ALL THIS WITH A REAL SERVER THAT SAVES YOUR DATA
- * AND SUPPLIES YOUR DATA TO YOUR REACT APP
- */
+/*
+import express from 'express';
+import mongoose from 'mongoose'; 
+require("dotenv").config(); 
 
- class Api {
-    constructor() {
-        this.pizzaData = [
-            { orderId: 123456789 },
-            { orderId: 234567890 },
-            { orderId: 586467865 },
-            { orderId: 346578912 }
-        ];
-    }
+const app = express();
+mongoose.connect(
+    process.env.MONGODB_URI, 
+    {useNewUrlParser: true, useUnifiedTopology: true}
+)
+.then(() => console.log("MongoDB connected"))
+.catch(err => console.log(err));
 
-    async get(url) {
-        return url === "/post" ? this.pizzaData : [];
-    }
+const userSchema = new mongoose.Schema({
+    email: String,
+    required: true,
+    password: String,
+    required: true,
+    name: String,
+    required: true,
+    address: String,
+    required: true,
+    phoneNumber: String,
+    required: true
+});
 
-    async post(url) {
-        if (url === "/create") {
-            const newOrder = { orderId: Math.floor(100000000 + Math.random() * 900000000) };
-            return { message: "success", data: newOrder };
-        } else throw Error(404);
-    }
-}
+const postSchema = new mongoose.Schema({
+    title: "",
+    required: true,
+    price: "",
+    required: true,
+    description: "", 
+    required: true,
+    time: "",
+    required: true,
+    theme: "",
+    required: true,
+    numPieces: "",
+    required: true,
+    condition: "",
+    required: true,
+    setNum: "",
+    required: true,
+    pictures: [],
+    required: true
+});
 
-export default new Api();
+const User = mongoose.model('user', userSchema);
+const Post = mongoose.model('user', postSchema);
+export { User, app, Post };
+
+
+const port = 3000;
+log.save().then(() => console.log("One entry added"), (err) => console.log(err));
+
+app.listen(port, () => console.log("Server listening to port 3000"));
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})*/
