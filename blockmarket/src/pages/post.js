@@ -63,6 +63,10 @@ const navigate = useNavigate();
 function checkout(){
   navigate('/checkout');
 }
+function addToCart(){
+  //add to list for user
+  navigate('/cart');
+}
 function goToUser(){
   navigate('/otherUserPage');
 }
@@ -98,6 +102,7 @@ return(
         </ListGroup>
         <Card.Body>
         <Button onClick={checkout} className="shop-button">Checkout</Button>
+        <Button onClick={addToCart} className="shop-button">Add to Cart</Button>
       </Card.Body>
       </Card>
       </div>
