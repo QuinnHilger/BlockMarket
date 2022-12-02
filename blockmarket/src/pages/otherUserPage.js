@@ -6,42 +6,42 @@ import LegoImage from '../images/LegoImage.jpg';
 import {Globals} from '../App'
 //test posts
 const POSTS = [
+  {
+    image: 9,
+      title: "Luke Skywalker",
+      price: 25,
+      description: "BEEP BOOP IM A SHEEP",
+      theme: "Star Wars",
+      numPieces: 200,
+      setNumber: 34534,
+      condition: "New",
+      user: "Bob Fryer",
+      location: "utah"
+    },
     {
-        image: {LegoImage},
-        title: "TESTING TITLE",
-        price: 100,
-        description: "BBBBBB",
-        theme: "Super Heros",
-        peices: 1,
-        setNumber: 1000,
-        condition: "Old",
-        user: "Bob Doctor",
-        location: "New Hampshire"
-      },
-      {
-        image: {LegoImage},
-        title: "TESTING TITLE",
-        price: 10,
-        description: "BBBBBB",
-        theme: "Super Heros",
-        peices: 1,
-        setNumber: 1000,
-        condition: "Old",
-        user: "Bob Doctor",
-        location: "New Hampshire"
-      },
-      {
-        image: {LegoImage},
-        title: "TESTING TITLE",
-        price: 55,
-        description: "BBBBBB",
-        theme: "Super Heros",
-        peices: 1,
-        setNumber: 1000,
-        condition: "Old",
-        user: "Bob Doctor",
-        location: "New Hampshire"
-      }
+      image: 10,
+      title: "Scary Ship",
+      price: 500,
+      description: "BUY ME NOW",
+      theme: "Star Wars",
+      numPieces: 3330,
+      setNumber: 100234,
+      condition: "New",
+      user: "Bob Fryer",
+      location: "Utah"
+    },
+    {
+      image: 12,
+      title: "Captain Captain",
+      price: 25,
+      description: "Come save the day",
+      theme: "Superheros",
+      numPieces: 200,
+      setNumber: 34534,
+      condition: "New",
+      user: "Bob Fryer",
+      location: "Utah"
+    }
     ]
 //creating a user to test data
 let profile = {email: "bob_Doctor@gmail.com",
@@ -51,7 +51,7 @@ address: "59 Canda St",
 phoneNumber: "6038239393"}
 
 let testPost = {
-  image: {LegoImage},
+  image: 8,
   title: "TESTING TITLE",
   price: 99,
   description: "BBBBBB",
@@ -65,18 +65,18 @@ let testPost = {
 
 const REVIEWS = [
 {
-    title: "Great product",
+    title: "I love buying from Bob",
     score: 9,
     body: "Purchased last week as gift for my child."
 },
 
-{title: "Mid product",
+{title: "So happy",
 score: 8,
-body: "Purchased last week as gift for my child."},
+body: "I've been looking for this set for years, thanks for the great deal"},
 
-{title: "Great product",
-score: 7,
-body: "Purchased last week as gift for my child."},
+{title: "Disappointed in package",
+score: 4,
+body: "Wasn't shipped very well"},
 ]
 
 function OtherUserPage(props) {
@@ -85,11 +85,11 @@ const [foundReviews, setFoundReviews] = useState(REVIEWS);
 const navigate = useNavigate();
 const {post} = useContext(Globals);
   const [userData, setFormData] = useState({
-        email: post.user.email,
-        password: post.user.password,
-        name: post.user.name,
-        address: post.user.address,
-        phoneNumber: post.user.phoneNumber
+        email: "bobfryer@gmail.com",
+        password: "bobby123",
+        name: "Bob Fryer",
+        address: "335 Main St, San Diego",
+        phoneNumber: "332-559-3456"
   });
   
   function getReview(event){

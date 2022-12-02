@@ -10,7 +10,7 @@ const USERS = [
       name: "Bob Fryer",
       address: "335 Main St, San Diego",
       state: "CA",
-      phoneNumber: "332-559-3456"
+      phoneNumber: "332-559-3456",
     },
     {
       email: "johnsmith@gmail.com",

@@ -22,7 +22,6 @@ let testPost = {
   user: "Bob Doctor",
   location: "New Hampshire"
 };
-
 const REVIEWS = [
   {
       title: "Great product",
