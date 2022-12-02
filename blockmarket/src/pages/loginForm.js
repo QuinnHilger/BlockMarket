@@ -1,8 +1,34 @@
 import React, { useState,useContext } from 'react';
 import {useNavigate} from 'react-router-dom';
-import {Button} from 'react-bootstrap';
+import {Alert} from 'react-bootstrap';
 import {Globals} from '../App'
 
+const USERS = [
+    {
+      email: "bobfryer@gmail.com",
+      password: "bobby123",
+      name: "Bob Fryer",
+      address: "335 Main St, San Diego",
+      state: "CA",
+      phoneNumber: "332-559-3456"
+    },
+    {
+      email: "johnsmith@gmail.com",
+      password: "johnny123",
+      name: "John Smith",
+      address: "335 Main St, Austin",
+      state: "TX",
+      phoneNumber: "512-559-3456"
+    },
+    {
+      email: "janedoe@gmail.com",
+      password: "jane1234",
+      name: "Jane Doe",
+      address: "335 Main St, Minneapolis",
+      state: "MN",
+      phoneNumber: "356-432-4532"
+    },
+  ]
 /**
  * Form used to create a user
  * @param {IProps} props an object containing props of type IProps
@@ -10,12 +36,12 @@ import {Globals} from '../App'
 
 function LoginForm({}) {
   const navigate = useNavigate();
-  const {setUser} = useContext(Globals)
+  const {setUser, user} = useContext(Globals)
   const [formData, setFormData] = useState({
         email: "",
         password: ""
   });
-
+  const [errorMessage, setErrorMessage] = useState('');
   /**
    * event handler for some change to the form (entry of new data, changes, etc.)
    * @param {React.FormEvent<HTMLInputElement>} event 
@@ -34,9 +60,17 @@ function LoginForm({}) {
    */
   async function handleSubmit(event) {
     event.preventDefault();
+    for(let i = 0; i<USERS.length;i++)
+    {
+      if(formData.email === USERS[i].email && formData.password === USERS[i].password)
+        setUser(USERS[i]);
+    }
+    if(user.email === "")
+      setErrorMessage(<Alert variant="danger">Invalid Credentials</Alert>);
     //Check to make sure account exists, if it does, set current account to that account
     //if it doesn't, show message of account doesn't exist
-    navigate('/');
+    else
+      navigate('/');
     //initialize an account
   }
 
@@ -47,6 +81,7 @@ function LoginForm({}) {
   return (
     <div className="Auth-form-container">
         <form className="Auth-form">
+          {errorMessage}
           <div className="Auth-form-content">
             <h3 className="Auth-form-title">Login to your account</h3>
             <div className="text-center">

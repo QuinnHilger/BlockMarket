@@ -42,46 +42,15 @@ const REVIEWS = [
 function UserPage() {
   const navigate = useNavigate();
   const [foundReviews, setFoundReviews] = useState(REVIEWS);
-  //const {user, setUser} = useContext(Globals);
+  const {user, setUser} = useContext(Globals);
   const [formData, setFormData] = useState({
-        email: "",
-        password: "",
-        name: "",
-        address: "",
-        state: "",
-        phoneNumber: ""
+        email: user.email,
+        password: user.password,
+        name: user.name,
+        address: user.address,
+        state: user.state,
+        phoneNumber: user.phoneNumber
   });
-  fetch("http://localhost:3001/user/Display",
-    {
-        method: "GET",
-        mode: 'cors',
-    })
-    //.then(r =>  r.json().then(data => ({status: r.status, body: data})))
-    .then(function(res){ 
-      if(res.status === 202){
-        console.log("reached end");
-        var response = res.json();
-        formData.email = response.email;
-        formData.password = response.password;
-        formData.name = response.name;
-        formData.address = response.address;
-        formData.state = response.state;
-        formData.phoneNumber = response.phoneNumber;
-        console.log("email: " + formData.email);
-        console.log("password: " + formData.password);
-        console.log("name: " + formData.name);
-        //show account info
-      }
-      else{
-        //show message of account doesn't exist
-      }
-      console.log("REQNOTERRORGET");
-      console.log(res) })
-    .catch(function(res){ 
-      console.error("REQERRORGET");
-      console.error(res); 
-    })
-  
   /**
    * event handler for some change to the form (entry of new data, changes, etc.)
    * @param {React.FormEvent<HTMLInputElement>} event 
@@ -97,14 +66,14 @@ function UserPage() {
   function handleSubmit(event) {
     console.log(formData);
     event.preventDefault();
-    //setUser(formData);
-    //console.log(user);
+    setUser(formData);
+    console.log(user);
   }
   
   function getReview(event){
     event.preventDefault()
     //fetch next review from profile
-    
+  }
 
   function DisplayReview({thisReview}){
     return(<Card className="review-display2">
@@ -125,14 +94,14 @@ function UserPage() {
           <div className="profile-container">
         <form className="profile-form">
           <div className="profile-form-content">
-            <h3 className="Auth-form-title">Update Profile</h3>
+            <h3 calssName="Auth-form-title">Update Profile</h3>
             <div className="form-group mt-3">
               <label>Email Address</label>
               <input
                 type="text"
                 name="email"
                 onChange={handleFormChange}
-                //holder="e.g johnsmith@gmail.com"
+                placeholder="e.g johnsmith@gmail.com"
                 value={formData.email}
                 className="form-control mt-1"
               />
@@ -143,7 +112,7 @@ function UserPage() {
                 type="text"
                 name="password"
                 onChange={handleFormChange}
-                //placeholder="Password"
+                placeholder="Password"
                 value={formData.password}
                 className="form-control mt-1"
               />
@@ -154,7 +123,7 @@ function UserPage() {
               type="text"
               name="name"
               onChange={handleFormChange}
-              //placeholder="John Smith"
+              placeholder="John Smith"
               value={formData.name}
               className="form-control mt-1"
             />
@@ -165,7 +134,7 @@ function UserPage() {
               type="text"
               name="address"
               onChange={handleFormChange}
-              //placeholder="123 Park St, San Diego"
+              placeholder="123 Park St, San Diego"
               value={formData.address}
               className="form-control mt-1"
             />
@@ -176,7 +145,7 @@ function UserPage() {
               type="text"
               name="state"
               onChange={handleFormChange}
-              //placeholder="CA"
+              placeholder="CA"
               value={formData.state}
               class="form-control">
                 <option value="AL">Alabama</option>
@@ -238,7 +207,7 @@ function UserPage() {
               type="text"
               name="phoneNumber"
               onChange={handleFormChange}
-              //placeholder="1234567890"
+              placeholder="1234567890"
               value={formData.phoneNumber}
               className="form-control mt-1"
             />
@@ -289,7 +258,6 @@ function UserPage() {
       </Row>
     </Container>
   );
-}
 }
 
 export default UserPage;

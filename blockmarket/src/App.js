@@ -39,12 +39,12 @@ function App() {
   });
   
   const [user, setUser] = useState({
-    email: "bobdoctor@gmail.com",
-    password: "bobologist1",
-    name: "Bob Doctor",
-    address: "8008135 Main St, Los Angeles",
-    state: "CA",
-    phoneNumber: "1234567890",
+    email: "",
+    password: "",
+    name: "",
+    address: "",
+    state: "",
+    phoneNumber: "",
     cart: [],
     posts: [],
     reviews: []
@@ -101,7 +101,7 @@ function App() {
       <Routes>
           <Route path="/createpost" element={<Globals.Provider value = {{user}}><PostForm /></Globals.Provider>} />
           <Route path="/createuser" element={<Globals.Provider value = {{setUser}}><UserForm /></Globals.Provider>} />
-          <Route path="/login" element={<Globals.Provider value = {{setUser}}><LoginForm /></Globals.Provider>} />
+          <Route path="/login" element={<Globals.Provider value = {{setUser, user}}><LoginForm /></Globals.Provider>} />
           <Route path="/home" element={<Globals.Provider value = {{searchInput, setSearchInput, filterData, setFilterData}}><Home /></Globals.Provider>} />
           <Route path="/filters" element={<Globals.Provider value = {{ filterData, setFilterData}}><Filters /></Globals.Provider>} />
           <Route path="/userPage" element={<Globals.Provider value = {{setPost, user, setUser}}><UserPage /></Globals.Provider>} />
