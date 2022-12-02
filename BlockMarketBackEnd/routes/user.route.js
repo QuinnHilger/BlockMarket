@@ -1,10 +1,16 @@
 const express = require('express');
 const router = express.Router();
+router.use(express.json());
 const crypto = require('crypto');
 const User = require('../models/user.model');
 
 router.post('/Signup', async function (req, res) {
-  console.log("Reached");
+  console.log("email: " + req.body.email);
+  console.log("password: " + req.body.password);
+  console.log("name: " + req.body.name);
+  console.log("address: " + req.body.address);
+  console.log("state: " + req.body.state);
+  console.log("phoneNumber: " + req.body.phoneNumber);
   const { email, password, name, address, state, phoneNumber } = req.body;
   try {
     const response = await User.create({

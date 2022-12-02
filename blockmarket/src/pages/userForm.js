@@ -46,6 +46,10 @@ function UserForm({}) {
     fetch("http://localhost:3001/user/Signup",
     {
         method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
         body: JSON.stringify(
         { 
           email: formData.email,
