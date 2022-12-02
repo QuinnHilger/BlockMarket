@@ -4,6 +4,7 @@ const crypto = require('crypto');
 const User = require('../models/user.model');
 
 router.post('/Signup', async function (req, res) {
+  console.log("Reached");
   const { email, password, name, address, state, phoneNumber } = req.body;
   try {
     const response = await User.create({
@@ -14,8 +15,11 @@ router.post('/Signup', async function (req, res) {
       state,
       phoneNumber,
     });
+    console.log("Worked");
     return res.status(201).json(response);
-  } catch (error) {
+  } 
+  catch (error) {
+    console.log(error);
     return res.status(500).json({ Error: error });
   }
 });

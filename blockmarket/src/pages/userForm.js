@@ -3,7 +3,6 @@ import {Alert} from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom';
 import LegoImage from '../images/LegoImage.jpg';
 import {Globals} from '../App.js'
-//import express from 'express';
 
 /**
  * Form used to create a user
@@ -12,7 +11,7 @@ import {Globals} from '../App.js'
 
 function UserForm({}) {
   const navigate = useNavigate();
-  const {setUser} = useContext(Globals);
+  //const {setUser} = useContext(Globals);
   const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -43,7 +42,27 @@ function UserForm({}) {
    */
   async function handleSubmit(event) {
     event.preventDefault();
-    setUser(formData);
+    //setUser(formData);
+    fetch("http://localhost:3001/user/Signup",
+    {
+        method: "POST",
+        body: JSON.stringify(
+        { 
+          email: formData.email,
+          password: formData.password,
+          name: formData.name,
+          address: formData.address,
+          state: formData.state,
+          phoneNumber:formData.phoneNumber
+        })
+    })
+    .then(function(res){ 
+      console.log("REQNOTERROR");
+      console.log(res) })
+    .catch(function(res){ 
+      console.error("REQERROR");
+      console.error(res); 
+    })
     navigate('/home');
   }
 
