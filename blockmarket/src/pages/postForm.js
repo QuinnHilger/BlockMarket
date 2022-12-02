@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styles from '../styles.module.css';
 import LegoImage from '../images/LegoImage.jpg';
 import {Form, useNavigate} from 'react-router-dom';
 import {Container, Row, Col, Card, ListGroup, Image} from 'react-bootstrap';
+import {Globals} from '../App';
 
 /**
  * Form used to create a post
@@ -12,12 +13,13 @@ import {Container, Row, Col, Card, ListGroup, Image} from 'react-bootstrap';
 
 function PostForm({}) {
   const navigate = useNavigate();
+  const {user} = useContext(Globals);
   const [formData, setFormData] = useState({
         title: "",
         price: "",
         description: "", 
-        //profile to create later
-        //location from user
+        user: user,
+        location: user.state,
         time: "",
         theme: "",
         numPieces: "",
@@ -45,6 +47,7 @@ function PostForm({}) {
    */
   const handleSubmit = (event) =>{
     const form = event.currentTarget;
+    console.log(formData);
     event.preventDefault();
     //initialize post with variables
     navigate('/');
@@ -55,7 +58,7 @@ function PostForm({}) {
   }
 
   function ReturnImage({}){
-    if (picture == null){
+    if (picture === null){
       return(
         <Image
             fluid

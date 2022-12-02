@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import {Alert} from 'react-bootstrap';
 import {useNavigate} from 'react-router-dom';
 import LegoImage from '../images/LegoImage.jpg';
+import {Globals} from '../App.js'
 //import express from 'express';
 
 /**
@@ -11,6 +12,7 @@ import LegoImage from '../images/LegoImage.jpg';
 
 function UserForm({}) {
   const navigate = useNavigate();
+  const {setUser} = useContext(Globals);
   const [formData, setFormData] = useState({
         email: "",
         password: "",
@@ -41,8 +43,8 @@ function UserForm({}) {
    */
   async function handleSubmit(event) {
     event.preventDefault();
+    setUser(formData);
     navigate('/home');
-    //initialize an account
   }
 
   return (

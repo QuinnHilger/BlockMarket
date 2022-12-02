@@ -29,7 +29,7 @@ function App() {
   const [post, setPost] = useState({
     title: "",
     description: "",
-    user: "",
+    user: null,
     price: "",
     location: "",
     theme: "",
@@ -38,6 +38,18 @@ function App() {
     condition: "",
   });
   
+  const [user, setUser] = useState({
+    email: "bobdoctor@gmail.com",
+    password: "bobologist1",
+    name: "Bob Doctor",
+    address: "8008135 Main St, Los Angeles",
+    state: "CA",
+    phoneNumber: "1234567890",
+    cart: [],
+    posts: [],
+    reviews: []
+  });
+
   const [filterData, setFilterData] = useState({
     sortBy: "Date Added (newest)",
     theme: "All Themes",
@@ -87,14 +99,14 @@ function App() {
     </Navbar>
       </header>
       <Routes>
-          <Route path="/createpost" element={<PostForm />} />
-          <Route path="/createuser" element={<UserForm />} />
-          <Route path="/login" element={<LoginForm />} />
+          <Route path="/createpost" element={<Globals.Provider value = {{user}}><PostForm /></Globals.Provider>} />
+          <Route path="/createuser" element={<Globals.Provider value = {{setUser}}><UserForm /></Globals.Provider>} />
+          <Route path="/login" element={<Globals.Provider value = {{setUser}}><LoginForm /></Globals.Provider>} />
           <Route path="/home" element={<Globals.Provider value = {{searchInput, setSearchInput, filterData, setFilterData}}><Home /></Globals.Provider>} />
           <Route path="/filters" element={<Globals.Provider value = {{ filterData, setFilterData}}><Filters /></Globals.Provider>} />
-          <Route path="/userPage" element={<Globals.Provider value = {{setPost}}><UserPage /></Globals.Provider>} />
-          <Route path="/otherUserPage" element={<Globals.Provider value = {{setPost}}><OtherUserPage /></Globals.Provider>} />
-          <Route path='/fullPost' element={<Globals.Provider value = {{post}}><Post /></Globals.Provider>}/>
+          <Route path="/userPage" element={<Globals.Provider value = {{setPost, user, setUser}}><UserPage /></Globals.Provider>} />
+          <Route path="/otherUserPage" element={<Globals.Provider value = {{setPost, post}}><OtherUserPage /></Globals.Provider>} />
+          <Route path='/fullPost' element={<Globals.Provider value = {{post, user}}><Post /></Globals.Provider>}/>
           <Route path="/checkout" element={<Globals.Provider value = {{post}}><CheckoutForm /></Globals.Provider>} />
           <Route path="/searchPage" element={<Globals.Provider value = {{searchInput, setSearchInput, filterData, setPost}}><SearchPage /></Globals.Provider>} />
           <Route path="/cart" element={<Globals.Provider value = {{setPost}}> <Cart /></Globals.Provider>} />

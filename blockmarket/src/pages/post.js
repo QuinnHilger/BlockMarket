@@ -58,13 +58,14 @@ function PostPreview({thisPost}){
     )
 }
 function Post(){
-const {post} = useContext(Globals);
+const {post, user} = useContext(Globals);
 const navigate = useNavigate();
 function checkout(){
   navigate('/checkout');
 }
 function addToCart(){
-  //add to list for user
+  user.cart.append(post);
+  //add to list for user on backend
   navigate('/cart');
 }
 function goToUser(){

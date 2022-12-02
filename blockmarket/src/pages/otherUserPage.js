@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Card, Button, Container, Row, Col} from "react-bootstrap";
 import {Post, PostPreview} from './post.js';
 import LegoImage from '../images/LegoImage.jpg';
-
+import {Globals} from '../App'
 //test posts
 const POSTS = [
     {
@@ -82,13 +82,14 @@ body: "Purchased last week as gift for my child."},
 function OtherUserPage(props) {
 const [foundPosts, setFoundPosts] = useState(POSTS);
 const [foundReviews, setFoundReviews] = useState(REVIEWS);
-  const navigate = useNavigate();
+const navigate = useNavigate();
+const {post} = useContext(Globals);
   const [userData, setFormData] = useState({
-        email: profile.email,
-        password: profile.password,
-        name: profile.name,
-        address: profile.address,
-        phoneNumber: profile.phoneNumber
+        email: post.user.email,
+        password: post.user.password,
+        name: post.user.name,
+        address: post.user.address,
+        phoneNumber: post.user.phoneNumber
   });
   
   function getReview(event){

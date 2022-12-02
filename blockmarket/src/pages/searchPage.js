@@ -54,16 +54,16 @@ function SearchBar({}){
       let word = ""
       let words = [];
       foundPosts = [];
-      if(searchInput.length == 0){
+      if(searchInput.length === 0){
         for(let i=0; i<POSTS.length; i++){
-          if((filterData.theme == "All Themes" || filterData.theme == POSTS[i].theme) && (filterData.condition == "Any Condition" || filterData.condition == POSTS[i].condition) 
-        && (filterData.location == "Any Location" || filterData.location == POSTS[i].location) && (filterData.minPieces <= POSTS[i].numPieces && filterData.maxPieces >= POSTS[i].numPieces)){
+          if((filterData.theme === "All Themes" || filterData.theme === POSTS[i].theme) && (filterData.condition === "Any Condition" || filterData.condition === POSTS[i].condition) 
+        && (filterData.location === "Any Location" || filterData.location === POSTS[i].location) && (filterData.minPieces <= POSTS[i].numPieces && filterData.maxPieces >= POSTS[i].numPieces)){
           foundPosts.push(POSTS[i]);
         }
         }
       }
       for (let i = 0; i < searchInput.length; i++){
-        if(searchInput[i] === ' ' || i == searchInput.length - 1){
+        if(searchInput[i] === ' ' || i === searchInput.length - 1){
           words.push(word);
           word = "";
         }
@@ -74,8 +74,8 @@ function SearchBar({}){
       for(let i=0; i<POSTS.length; i++){
         console.log(filterData);
         console.log(POSTS[i].theme);
-        if((filterData.theme == "All Themes" || filterData.theme == POSTS[i].theme) && (filterData.condition == "Any Condition" || filterData.condition == POSTS[i].condition) 
-        && (filterData.location == "Any Location" || filterData.location == POSTS[i].location) && (filterData.minPieces <= POSTS[i].numPieces && filterData.maxPieces >= POSTS[i].numPieces)){
+        if((filterData.theme === "All Themes" || filterData.theme === POSTS[i].theme) && (filterData.condition === "Any Condition" || filterData.condition === POSTS[i].condition) 
+        && (filterData.location === "Any Location" || filterData.location === POSTS[i].location) && (filterData.minPieces <= POSTS[i].numPieces && filterData.maxPieces >= POSTS[i].numPieces)){
         for(let j=0; j<words.length; j++){
         word = words[j];
         if(POSTS[i].title.includes(word) || POSTS[i].description.includes(word)){

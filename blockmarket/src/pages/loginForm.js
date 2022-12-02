@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Button} from 'react-bootstrap';
+import {Globals} from '../App'
 
 /**
  * Form used to create a user
@@ -9,6 +10,7 @@ import {Button} from 'react-bootstrap';
 
 function LoginForm({}) {
   const navigate = useNavigate();
+  const {setUser} = useContext(Globals)
   const [formData, setFormData] = useState({
         email: "",
         password: ""

@@ -1,19 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Card, Button, Container, Row, Col} from "react-bootstrap";
 import {Post, PostPreview} from './post.js';
 import LegoImage from '../images/LegoImage.jpg';
+import {Globals} from '../App.js'
 /**
  * Form used to create a user
  * @param {IProps} props an object containing props of type IProps
  */
 
-//creating a user to test data
-let profile = {email: "bob_Doctor@gmail.com",
-password: "Password123",
-name: "Bob Bob",
-address: "59 Canda St",
-phoneNumber: "6038239393"}
 
 let testPost = {
   image: {LegoImage},
@@ -44,22 +39,24 @@ const REVIEWS = [
   body: "Purchased last week as gift for my child."},
   ]
 
-function UserPage(props) {
+function UserPage() {
   const navigate = useNavigate();
   const [foundReviews, setFoundReviews] = useState(REVIEWS);
-  const [userData, setFormData] = useState({
-        email: profile.email,
-        password: profile.password,
-        name: profile.name,
-        address: profile.address,
-        phoneNumber: profile.phoneNumber
+  const {user, setUser} = useContext(Globals);
+  const [formData, setFormData] = useState({
+        email: user.email,
+        password: user.password,
+        name: user.name,
+        address: user.address,
+        state: user.state,
+        phoneNumber: user.phoneNumber
   });
   /**
    * event handler for some change to the form (entry of new data, changes, etc.)
    * @param {React.FormEvent<HTMLInputElement>} event 
    */
    const handleFormChange = (event) => {
-    setFormData({...userData, [event.target.name]: event.target.value});
+    setFormData({...formData, [event.target.name]: event.target.value});
   };
 
   /**
@@ -67,8 +64,10 @@ function UserPage(props) {
    * @param {React.MouseEvent<React.HTMLInputElement>} event 
    */
   function handleSubmit(event) {
-    event.preventDefault()
-    //Change account values
+    console.log(formData);
+    event.preventDefault();
+    setUser(formData);
+    console.log(user);
   }
   
   function getReview(event){
@@ -77,8 +76,6 @@ function UserPage(props) {
   }
 
   function DisplayReview({thisReview}){
-    console.log(thisReview);
-    console.log(thisReview.title);
     return(<Card className="review-display2">
     <Card.Body>
       <Card.Title>{thisReview.title}</Card.Title>
@@ -105,7 +102,7 @@ function UserPage(props) {
                 name="email"
                 onChange={handleFormChange}
                 placeholder="e.g johnsmith@gmail.com"
-                value={userData.email}
+                value={formData.email}
                 className="form-control mt-1"
               />
             </div>
@@ -116,7 +113,7 @@ function UserPage(props) {
                 name="password"
                 onChange={handleFormChange}
                 placeholder="Password"
-                value={userData.password}
+                value={formData.password}
                 className="form-control mt-1"
               />
           </div>
@@ -127,7 +124,7 @@ function UserPage(props) {
               name="name"
               onChange={handleFormChange}
               placeholder="John Smith"
-              value={userData.name}
+              value={formData.name}
               className="form-control mt-1"
             />
           </div>
@@ -138,7 +135,7 @@ function UserPage(props) {
               name="address"
               onChange={handleFormChange}
               placeholder="123 Park St, San Diego"
-              value={userData.address}
+              value={formData.address}
               className="form-control mt-1"
             />
           </div>
@@ -149,7 +146,7 @@ function UserPage(props) {
               name="state"
               onChange={handleFormChange}
               placeholder="CA"
-              value={userData.state}
+              value={formData.state}
               class="form-control">
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
@@ -211,7 +208,7 @@ function UserPage(props) {
               name="phoneNumber"
               onChange={handleFormChange}
               placeholder="1234567890"
-              value={userData.phoneNumber}
+              value={formData.phoneNumber}
               className="form-control mt-1"
             />
           </div>
@@ -227,7 +224,7 @@ function UserPage(props) {
       <Col>
       <Card className="test-center bg-warning text-white mt-3 py-2">
             <Card.Body className="header-a">
-              {userData.name}'s Reviews
+              {formData.name}'s Reviews
             </Card.Body>
         </Card>
         <div>
@@ -248,7 +245,7 @@ function UserPage(props) {
       </Row>
       <Card className="test-center bg-warning text-white mt-3 py-2">
             <Card.Body className="header-a">
-              {userData.name}'s Posts
+              {formData.name}'s Posts
             </Card.Body>
           </Card>
       <Row>
