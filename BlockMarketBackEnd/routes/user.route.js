@@ -13,7 +13,7 @@ router.post('/Signup', async function (req, res) {
   console.log("phoneNumber: " + req.body.phoneNumber);
   const { email, password, name, address, state, phoneNumber } = req.body;
   try {
-    const response = User.create({
+    const response = await User.create({
       email,
       password,
       name,
@@ -23,6 +23,21 @@ router.post('/Signup', async function (req, res) {
     });
     console.log("Worked");
     return res.status(201).json(response);
+  } 
+  catch (error) {
+    console.log("catch: " + error);
+    return res.status(500).json({ Error: error });
+  }
+});
+
+router.get('/Display', async function (req, res) {
+  try {
+    const response = await User.findOne({}); 
+    console.log("Workedget");
+    if (response !== null) {
+      return res.status(202).json(response);
+    }
+    return res.status(201);
   } 
   catch (error) {
     console.log("catch: " + error);
