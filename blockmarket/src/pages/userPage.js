@@ -94,7 +94,7 @@ function UserPage() {
           <div className="profile-container">
         <form className="profile-form">
           <div className="profile-form-content">
-            <h3 calssName="Auth-form-title">Update Profile</h3>
+            <h3 className="Auth-form-title">Update Profile</h3>
             <div className="form-group mt-3">
               <label>Email Address</label>
               <input

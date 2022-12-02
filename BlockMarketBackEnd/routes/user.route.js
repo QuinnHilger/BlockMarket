@@ -13,7 +13,7 @@ router.post('/Signup', async function (req, res) {
   console.log("phoneNumber: " + req.body.phoneNumber);
   const { email, password, name, address, state, phoneNumber } = req.body;
   try {
-    const response = await User.create({
+    const response = User.create({
       email,
       password,
       name,
@@ -25,7 +25,7 @@ router.post('/Signup', async function (req, res) {
     return res.status(201).json(response);
   } 
   catch (error) {
-    console.log(error);
+    console.log("catch: " + error);
     return res.status(500).json({ Error: error });
   }
 });

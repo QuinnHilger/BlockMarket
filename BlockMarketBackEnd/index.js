@@ -8,13 +8,18 @@ const User = require('./routes/user.route');
 const Post = require('./routes/post.route');
 const Cart = require('./routes/cart.route');
 
-mongoose.connect(
-  'mongodb://localhost/testdb',
-  () => {
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/testdb', () => {
     console.log('connected');
   },
-  (e) => console.error(e)
+  (e) => console.error("db error: " + e)
 );
+
+//mongoose.connect('mongodb://localhost/testdb');
+/*const connection = mongoose.connection;
+connection.once('open', () => {
+  console.log("MongoDB database connection established successfully");
+})*/
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
