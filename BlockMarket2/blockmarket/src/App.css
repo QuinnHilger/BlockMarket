@@ -1,0 +1,220 @@
+
+/* Found template from supertokens.com "building a login screen with React
+and Bootstrap */
+.App {
+    background-color: white;
+  }
+  
+  .Auth-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+  .wrapper{
+    position: center;
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    background-color:#D21404;
+  }
+  .search{
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    height: 40px;
+    width: 100%;
+    padding: 2px 23px 2px 30px;
+    outline: 0;
+    background-color: #ded954;
+  }
+  
+  .Auth-form {
+    width: 420px;
+    box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    border-radius: 8px;
+    background-color: white;
+  }
+  
+  .Auth-form-content {
+    padding-left: 12%;
+    padding-right: 12%;
+  }
+  
+  .Auth-form-title {
+    text-align: center;
+    margin-bottom: 1em;
+    font-size: 24px;
+    color: rgb(34, 34, 34);
+    font-weight: 800;
+  }
+  
+  label {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(34, 34, 34);
+  }
+
+  .navbar-a{
+    font-family: Georgia;
+    color: #D21404;
+    font-weight: bolder;
+    font-size: 40px;
+  }
+  .header-intro{
+    font-family: Georgia;
+    color: #D21404;
+    font-weight:bold;
+    font-size: 34px;
+  }
+  .header-a{
+    font-family: Georgia;
+    color: #D21404;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+  }
+  .header-b{
+    font-family: Georgia;
+    color: #D21404;
+    font-weight: bold;
+    font-size: 48px;
+    text-align: center;
+    padding-top: 25%;
+  }
+  .header-c{
+    font-family: Georgia;
+    color: #D21404;
+    font-weight: bold;
+    font-size: 48px;
+    text-align: center;
+    padding-top: 3%;
+  }
+  .home-container{
+    border:5px solid #efdd0e;
+  }
+
+  img{
+    border: 5px solid #D21404;
+  }
+
+  .profile-container{
+    display: flex;
+    justify-content: top;
+    align-items: top;
+    width: 35vw;
+  }
+
+  .profile-form {
+    width: 420px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    border-radius: 8px;
+    background-color: white;
+  }
+  .review-display{
+    width: 35vw;
+    margin-top: 30px;
+  }
+  .review-display2{
+    width: 25vw;
+    margin-top: 30px;
+  }
+
+  .post-preview{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 35vw;
+  }
+  .cards-container{
+    justify-content: center;
+    align-items: top;
+  }
+  
+  .form-title{
+    font-family: 'Times New Roman', Times, serif;
+    color: grey;
+    font-size: 16px;
+  }
+  .post{
+    margin-top: 20px;
+  }
+  .post-box{
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 60%;
+  }
+
+  .Auth-form2 {
+    margin-top: 20px;
+    box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    border-radius: 8px;
+    background-color: white;
+  }
+  .Auth-form-content2 {
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  .post-container {
+    margin: auto;
+    margin-bottom: 30%;
+    margin-top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 40vh;
+  }
+  .post-container2 {
+    margin: auto;
+    margin-bottom: 60%;
+    margin-top: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 40vh;
+  }
+  .shop-button {
+    background-color:#D21404;
+    color: white;
+    border: 2px solid yellow;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    margin-left: 5px;
+
+  }
+  .filter-title{
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    font-size: 28px;
+  }
+  .filter-body{
+    margin: auto;
+  }
+  .filter-container {
+    margin-top: 10%;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding-bottom: 10%;
+    justify-content: center;
+    display: flex;
+    width: 75vw;
+    box-shadow: rgb(0 0 0 / 16%) 3px 3px 20px;
+    border-radius: 8px;
+  }
