@@ -12,13 +12,13 @@ import {Globals} from '../App.js'
 
 let testPost = {
   image: {LegoImage},
-  title: "TESTING TITLE",
+  title: "Lego Star Wars Millenium Falcon",
   price: 99,
-  description: "BBBBBB",
-  theme: "Super Heros",
-  peices: 1,
+  description: "Great LEGO set to gift to any LEGO or Star Wars enthusiast",
+  theme: "Star Wars",
+  peices: 1000,
   setNumber: 1000,
-  condition: "Old",
+  condition: "New",
   user: "Bob Doctor",
   location: "New Hampshire"
 };

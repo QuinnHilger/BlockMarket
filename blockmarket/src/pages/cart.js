@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Card, Button, Container, Row, Col} from "react-bootstrap";
 import {Post, PostPreview} from './post.js';
 import LegoImage from '../images/LegoImage.jpg';
+import {Globals} from '../App'
 
 //test posts
 const POSTS = [
@@ -47,6 +48,7 @@ const POSTS = [
 let profile = {name: "Bob Bob"}
 
 function Cart() {
+  const {user} = useContext(Globals);
     const [storedPosts, setStoredPosts] = useState(POSTS);
     const navigate = useNavigate();
   return (
