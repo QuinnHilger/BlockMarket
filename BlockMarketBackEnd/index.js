@@ -8,12 +8,16 @@ const User = require('./routes/user.route');
 const Post = require('./routes/post.route');
 const Cart = require('./routes/cart.route');
 
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/testdb', () => {
+
+/*mongoose.connect('mongodb://localhost/testdb', () => {
     console.log('connected');
   },
   (e) => console.error("db error: " + e)
-);
+);*/
+
+mongoose.connect('mongodb://localhost/testdb')
+.then(()=>console.log('connected'))
+.catch(e=>console.log("db_error: " + e));
 
 //mongoose.connect('mongodb://localhost/testdb');
 /*const connection = mongoose.connection;
