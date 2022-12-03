@@ -2,28 +2,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const morgan = require('morgan');
-const port = 3001;
+
 const app = express();
 const User = require('./routes/user.route');
 const Post = require('./routes/post.route');
 const Cart = require('./routes/cart.route');
 
-
-/*mongoose.connect('mongodb://localhost/testdb', () => {
+mongoose.connect(
+  'mongodb://localhost/testdb',
+  () => {
     console.log('connected');
   },
-  (e) => console.error("db error: " + e)
-);*/
-
-mongoose.connect('mongodb://localhost/testdb')
-.then(()=>console.log('connected'))
-.catch(e=>console.log("db_error: " + e));
-
-//mongoose.connect('mongodb://localhost/testdb');
-/*const connection = mongoose.connection;
-connection.once('open', () => {
-  console.log("MongoDB database connection established successfully");
-})*/
+  (e) => console.error(e)
+);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -34,8 +25,8 @@ app.use('/user', User);
 app.use('/Post', Post);
 app.use('/cart', Cart);
 
-app.listen(port, () => {
-  console.log('Server Listening on port '+ port);
+app.listen(3000, () => {
+  console.log('Server Listening on port 3000');
 });
 
 module.exports = app;
