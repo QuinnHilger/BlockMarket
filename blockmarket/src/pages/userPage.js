@@ -11,16 +11,28 @@ import {Globals} from '../App.js'
 
 
 let testPost = {
-  image: {LegoImage},
-  title: "Lego Star Wars Millenium Falcon",
+  image: 6,
+  title: "Minecraft Fox",
   price: 99,
-  description: "Great LEGO set to gift to any LEGO or Star Wars enthusiast",
-  theme: "Star Wars",
+  description: "come mining with your buddy ol pal MR. fox",
+  theme: "Other",
   peices: 1000,
   setNumber: 1000,
   condition: "New",
-  user: "Bob Doctor",
-  location: "New Hampshire"
+  user: "Jane Doe",
+  location: "Minnesota"
+};
+let testPost2 = {
+  image: 2,
+  title: "Little Barn",
+  price: 18,
+  theme: "Other",
+  description: "Come farming at our little barn",
+  numPieces: 120,
+  setNumber: 1002340,
+  condition: "Used",
+  user: "Jane Doe",
+  location: "Minnesota"
 };
 const REVIEWS = [
   {
@@ -252,7 +264,7 @@ function UserPage() {
       <PostPreview thisPost={testPost}></PostPreview>
       </Col>
       <Col sm='6'>
-      <PostPreview thisPost={testPost}/>
+      <PostPreview thisPost={testPost2}/>
       </Col>
       </Row>
     </Container>

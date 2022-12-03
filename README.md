@@ -8,6 +8,14 @@ and begin shopping!
 In order to begin shopping on our web page, please follow
 the instructions below to get BlockMarket running locally.
 
+Disclaimer: The following write up describes how to run and 
+navigate the web application of a completed version with 
+an integrated back end. This current version of the repository 
+will run and display a react app that uses static data. The 
+repository also contains code for the backend and server, however 
+it is incomplete and not integrated into a singular working
+version.
+
 First: clone the BlockMarket repository that you're currently 
 looking at into a local machine. This can easilly be done 
 by following the clone instructions on github. Once cloned,

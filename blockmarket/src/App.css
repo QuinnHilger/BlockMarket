@@ -131,6 +131,7 @@ and Bootstrap */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px;
     margin-top: 10px;
+    margin-bottom: 10px;
     width: 35vw;
   }
   .cards-container{
@@ -173,7 +174,7 @@ and Bootstrap */
 
   .post-container {
     margin: auto;
-    margin-bottom: 30%;
+    margin-bottom: 50%;
     margin-top: 20%;
     display: flex;
     justify-content: center;
@@ -183,8 +184,8 @@ and Bootstrap */
   }
   .post-container2 {
     margin: auto;
-    margin-bottom: 60%;
-    margin-top: 30%;
+    margin-bottom: 90%;
+    margin-top: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -217,4 +218,14 @@ and Bootstrap */
     width: 75vw;
     box-shadow: rgb(0 0 0 / 16%) 3px 3px 20px;
     border-radius: 8px;
+  }
+  .post-container4 {
+    margin: auto;
+    margin-bottom: 50%;
+    margin-top: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 40vh;
   }

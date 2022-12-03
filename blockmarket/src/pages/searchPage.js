@@ -115,7 +115,7 @@ const POSTS = [
     theme: "Superheros",
     numPieces: 120,
     setNumber: 1002340,
-    condition: "Old",
+    condition: "Used",
     user: "Jeffy Poo",
     location: "Texas"
   },
@@ -243,7 +243,7 @@ function SearchBar({}){
       }
       }
       }
-      console.log(foundPosts);
+      setSearchInput("");
       input.preventDefault();
     };
 

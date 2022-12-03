@@ -65,7 +65,7 @@ function Cart() {
                 <ul>
                 <li key={post}>
                 <span>
-                    <div className="post-container">
+                    <div className="post-container4">
                     <PostPreview thisPost={post}></PostPreview>
                     </div>
                 </span>

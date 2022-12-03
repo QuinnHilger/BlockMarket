@@ -50,7 +50,7 @@ function Filters({}) {
   async function handleSubmit(event) {
     event.preventDefault();
     console.log(filterData);
-    navigate('/');
+    navigate('/searchPage');
   }
 
   return (
@@ -71,7 +71,7 @@ function Filters({}) {
             <Dropdown.Item eventKey="City">City</Dropdown.Item>
             <Dropdown.Item eventKey="Lord of the Rings">Lord of the Rings</Dropdown.Item>
             <Dropdown.Item eventKey="Harry Potter">Harry Potter</Dropdown.Item>
-            <Dropdown.Item eventKey="Superheroes">Superheroes</Dropdown.Item>
+            <Dropdown.Item eventKey="Superheros">Superheros</Dropdown.Item>
             <Dropdown.Item eventKey="Architecture">Architecture</Dropdown.Item>
             <Dropdown.Item eventKey="Space">Space</Dropdown.Item>
             <Dropdown.Item eventKey="Other">Other</Dropdown.Item>

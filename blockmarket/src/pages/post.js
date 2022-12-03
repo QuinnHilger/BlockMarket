@@ -83,7 +83,6 @@ function checkout(){
   navigate('/checkout');
 }
 function addToCart(){
-  user.cart.append(post);
   //add to list for user on backend
   navigate('/cart');
 }
